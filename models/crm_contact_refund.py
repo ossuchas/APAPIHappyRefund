@@ -41,8 +41,11 @@ class CrmContactRefundModel(db.Model):
     ac02_remaks = db.Column(db.String(4000))
 
     email_sent_status = db.Column(db.String(2))
+    email_sent_date = db.Column(db.DateTime)
     sms_sent_status = db.Column(db.String(2))
+    sms_sent_date = db.Column(db.DateTime)
     doc_sent_status = db.Column(db.String(2))
+    doc_sent_date = db.Column(db.DateTime)
 
     tran_status = db.Column(db.String(2))
     createby = db.Column(db.String(50))
