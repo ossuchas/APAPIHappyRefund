@@ -26,18 +26,22 @@ class CrmContactRefundModel(db.Model):
 
     tf01_appv_flag = db.Column(db.String(2))
     tf01_appv_date = db.Column(db.DateTime)
+    tf01_appv_by = db.Column(db.String(50))
     tf01_remarks = db.Column(db.String(4000))
 
     tf02_appv_flag = db.Column(db.String(2))
     tf02_appv_date = db.Column(db.DateTime)
+    tf02_appv_by = db.Column(db.String(50))
     tf02_remarks = db.Column(db.String(4000))
 
     ac01_appv_flag = db.Column(db.String(2))
     ac01_appv_date = db.Column(db.DateTime)
+    ac01_appv_by = db.Column(db.String(50))
     ac01_remarks = db.Column(db.String(4000))
 
     ac02_appv_flag = db.Column(db.String(2))
     ac02_appv_date = db.Column(db.DateTime)
+    ac02_appv_by = db.Column(db.String(50))
     ac02_remarks = db.Column(db.String(4000))
 
     email_sent_status = db.Column(db.String(2))

@@ -34,6 +34,7 @@ class CrmContactRefund(Resource):
 
         if hyrf:
             hyrf.tf01_appv_flag = item_json["tf01_appv_flag"]
+            hyrf.tf01_appv_by = item_json["tf01_appv_by"]
             hyrf.tf01_remarks = item_json["tf01_remarks"]
         else:
             return {"message": "Can not find Department ID for update"}, 404
