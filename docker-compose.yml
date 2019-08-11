@@ -2,7 +2,7 @@ version: '3'
 
 services: 
   app:
-    container_name: apiangular
+    container_name: apihappyrefund
     build:
         context: .
         dockerfile: ./Dockerfile

@@ -1,0 +1,52 @@
+from db import db
+from typing import List
+
+
+class CrmContactRefundModel(db.Model):
+    __tablename__ = "crm_contact_refund"
+
+    hyrf_id = db.Column(db.Integer, primary_key=True)
+    productid = db.Column(db.String(15))
+    project = db.Column(db.String(255))
+    unitnumber = db.Column(db.String(10))
+    wbsnumber = db.Column(db.String(30))
+    contractnumber = db.Column(db.String(20))
+    transferdateapprove = db.Column(db.DateTime)
+    remainingtotalamount = db.Column(db.Float)
+    contactid = db.Column(db.String(50))
+    header = db.Column(db.Boolean)
+    personcardid = db.Column(db.String(20))
+    namestitle = db.Column(db.String(50))
+    firstname = db.Column(db.String(100))
+    lastname = db.Column(db.String(100))
+    fullname = db.Column(db.String(255))
+    nationality = db.Column(db.String(50))
+    mobile = db.Column(db.String(100))
+    email = db.Column(db.String(255))
+    tf01_appv_flag = db.Column(db.String(2))
+    tf01_appv_date = db.Column(db.DateTime)
+    tf02_appv_flag = db.Column(db.String(2))
+    tf02_appv_date = db.Column(db.DateTime)
+    ac01_appv_flag = db.Column(db.String(2))
+    ac02_appv_flag = db.Column(db.DateTime)
+    tran_status = db.Column(db.String(2))
+    createby = db.Column(db.String(50))
+    createdate = db.Column(db.DateTime)
+    modifyby = db.Column(db.String(50))
+    modifydate = db.Column(db.DateTime)
+
+    @classmethod
+    def find_by_id(cls, _hyrf_id: int) -> "CrmContactRefundModel":
+        return cls.query.filter_by(hyrf_id=_hyrf_id).first()
+
+    @classmethod
+    def find_all(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.all()
+
+    def save_to_db(self) -> None:
+        db.session.add(self)
+        db.session.commit()
+
+    def delete_from_db(self) -> None:
+        db.session.delete(self)
+        db.session.commit()

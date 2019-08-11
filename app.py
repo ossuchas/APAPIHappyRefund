@@ -6,6 +6,8 @@ from flask_cors import CORS
 from db import db
 from ma import ma
 
+from resources.crm_contact_refund import CrmContactRefund, CrmContactRefundList
+
 app = Flask(__name__)
 CORS(app, resources=r'/api/*', allow_headers='Content-Type')
 
@@ -19,6 +21,9 @@ api = Api(app, prefix="/api/v1")
 @app.before_first_request
 def create_tables():
     db.create_all()
+
+api.add_resource(CrmContactRefundList, "/refundlist")
+api.add_resource(CrmContactRefund, "/refund/<int:hyrf_id>")
 
 
 @app.route('/')
