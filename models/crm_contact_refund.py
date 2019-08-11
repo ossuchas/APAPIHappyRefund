@@ -38,7 +38,7 @@ class CrmContactRefundModel(db.Model):
 
     ac02_appv_flag = db.Column(db.String(2))
     ac02_appv_date = db.Column(db.DateTime)
-    ac02_remaks = db.Column(db.String(4000))
+    ac02_remarks = db.Column(db.String(4000))
 
     email_sent_status = db.Column(db.String(2))
     email_sent_date = db.Column(db.DateTime)

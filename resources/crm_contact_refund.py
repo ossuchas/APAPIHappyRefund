@@ -34,6 +34,17 @@ class CrmContactRefund(Resource):
 
         if hyrf:
             hyrf.tf01_appv_flag = item_json["tf01_appv_flag"]
+            hyrf.tf01_remarks = item_json["tf01_remarks"]
+
+            hyrf.tf02_appv_flag = item_json["tf02_appv_flag"]
+            hyrf.tf02_remarks = item_json["tf02_remarks"]
+
+            hyrf.ac01_appv_flag = item_json["ac01_appv_flag"]
+            hyrf.ac01_remarks = item_json["ac01_remarks"]
+
+            hyrf.ac02_appv_flag = item_json["ac02_appv_flag"]
+            hyrf.ac02_remarks = item_json["ac02_remarks"]
+
         else:
             return {"message": "Can not find Department ID for update"}, 404
 
