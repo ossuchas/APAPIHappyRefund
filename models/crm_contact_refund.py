@@ -23,12 +23,23 @@ class CrmContactRefundModel(db.Model):
     nationality = db.Column(db.String(50))
     mobile = db.Column(db.String(100))
     email = db.Column(db.String(255))
+
     tf01_appv_flag = db.Column(db.String(2))
     tf01_appv_date = db.Column(db.DateTime)
+    tf01_remarks = db.Column(db.String(4000))
+
     tf02_appv_flag = db.Column(db.String(2))
     tf02_appv_date = db.Column(db.DateTime)
+    tf02_remarks = db.Column(db.String(4000))
+
     ac01_appv_flag = db.Column(db.String(2))
-    ac02_appv_flag = db.Column(db.DateTime)
+    ac01_appv_date = db.Column(db.DateTime)
+    ac01_remarks = db.Column(db.String(4000))
+
+    ac02_appv_flag = db.Column(db.String(2))
+    ac02_appv_date = db.Column(db.DateTime)
+    ac02_remaks = db.Column(db.String(4000))
+
     tran_status = db.Column(db.String(2))
     createby = db.Column(db.String(50))
     createdate = db.Column(db.DateTime)
