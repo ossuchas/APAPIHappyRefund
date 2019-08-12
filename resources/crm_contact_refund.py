@@ -48,6 +48,7 @@ class CrmContactRefundList(Resource):
     @classmethod
     def get(cls):
         return hyrf_list_schema.dump(CrmContactRefundModel.find_all()), 200
+        # return hyrf_list_schema.dump(CrmContactRefundModel.find_all_tf01()), 200
 
 
 

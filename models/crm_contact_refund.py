@@ -65,6 +65,22 @@ class CrmContactRefundModel(db.Model):
     def find_all(cls) -> List["CrmContactRefundModel"]:
         return cls.query.all()
 
+    @classmethod
+    def find_all_tf01_appv(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(tf01_appv_flag='A').all()
+
+    @classmethod
+    def find_all_tf02_appv(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(tf02_appv_flag='A').all()
+
+    @classmethod
+    def find_all_ac01_appv(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(ac01_appv_flag='A').all()
+
+    @classmethod
+    def find_all_ac02_appv(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(ac02_appv_flag='A').all()
+
     def save_to_db(self) -> None:
         db.session.add(self)
         db.session.commit()
