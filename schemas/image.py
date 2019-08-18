@@ -7,14 +7,14 @@ class FileStorageField(fields.Field):
         "invalid": "Not a valid image."
     }
 
-    def _deserialize(self, value, attr, data) -> FileStorage:
-        if value is None:
-            return None
-
-        if not isinstance(value, FileStorage):
-            self.fail("invalid")
-
-        return value
+    # def _deserialize(self, value, attr, data) -> FileStorage:
+    #     if value is None:
+    #         return None
+    #
+    #     if not isinstance(value, FileStorage):
+    #         self.fail("invalid")
+    #
+    #     return value
 
 
 class ImageSchema(Schema):
