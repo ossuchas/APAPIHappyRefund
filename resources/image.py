@@ -13,7 +13,7 @@ image_schema = ImageSchema()
 
 
 class ImageUpload(Resource):
-    @jwt_required
+    # @jwt_required
     def post(self):
         """
         This endpoint is used to upload an image file. It uses the
@@ -23,8 +23,9 @@ class ImageUpload(Resource):
         unused integer. (eg. filename.png to filename_1.png).
         """
         data = image_schema.load(request.files)
-        user_id = get_jwt_identity()
-        folder = f"user_{user_id}"
+        # user_id = get_jwt_identity()
+        # folder = f"user_{user_id}"
+        folder = "user_1"
         try:
             # save(self, storage, folder=None, name=None)
             image_path = image_helper.save_image(data["image"], folder=folder)
@@ -37,7 +38,7 @@ class ImageUpload(Resource):
 
 
 class Image(Resource):
-    @jwt_required
+    # @jwt_required
     def get(self, filename: str):
         """
         This endpoint returns the requested image if exists. It will use JWT to
@@ -54,7 +55,7 @@ class Image(Resource):
         except FileNotFoundError:
             return {"message": errmsg("image_not_found").format(filename)}, 404
 
-    @jwt_required
+    # @jwt_required
     def delete(self, filename: str):
         """
         This endpoint is used to delete the requested image under the user's folder.
@@ -78,7 +79,7 @@ class Image(Resource):
 
 
 class AvatarUpload(Resource):
-    @jwt_required
+    # @jwt_required
     def put(self):
         """
         This endpoint is used to upload user avatar. All avatars are named after the user's id
