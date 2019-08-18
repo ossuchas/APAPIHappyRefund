@@ -19,11 +19,15 @@ class APAuthen:
     @classmethod
     def ap_authen(cls, username: str, password: str, appcode: str) -> Response:
         url = cls.APAUTHEN_URL
-        payload = {"UserName": username, "Password": password, "Appcode": appcode}
+        payload = {
+            "UserName": username,
+            "Password": password,
+            "Appcode": appcode
+        }
         headers = {
-            "Content-Type": "application/json",
-            "api_key": f"{cls.APAUTHEN_API_KEY}",
-            "api_token": f"{cls.APAUTHEN_API_TOKEN}",
+            'Content-Type': 'application/json',
+            'api_key': f"{cls.APAUTHEN_API_KEY}",
+            'api_token': f"{cls.APAUTHEN_API_TOKEN}"
         }
         response = post(url, data=json.dumps(payload), headers=headers)
 
