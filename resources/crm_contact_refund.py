@@ -51,4 +51,15 @@ class CrmContactRefundList(Resource):
         # return hyrf_list_schema.dump(CrmContactRefundModel.find_all_tf01()), 200
 
 
+# Find Personal ID Card from personal Id
+class CrmContactRefundPersonalIdList(Resource):
+    @classmethod
+    def get(cls, personal_id: str):
+        hyrf = CrmContactRefundModel.find_by_personalid(personal_id)
+        if hyrf:
+            return hyrf_list_schema.dump(CrmContactRefundModel.find_by_personalid(personal_id)), 200
+
+        return {"message": "No Data Found"}, 404
+
+
 

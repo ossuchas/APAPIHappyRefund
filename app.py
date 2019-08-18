@@ -8,7 +8,7 @@ from marshmallow import ValidationError
 from db import db
 from ma import ma
 
-from resources.crm_contact_refund import CrmContactRefund, CrmContactRefundList
+from resources.crm_contact_refund import CrmContactRefund, CrmContactRefundList, CrmContactRefundPersonalIdList
 from resources.userauthen import UserLogin
 from resources.image import ImageUpload, Image, AvatarUpload, Avatar
 from libs.image_helper import IMAGE_SET
@@ -45,6 +45,9 @@ api.add_resource(ImageUpload, "/upload/image")
 api.add_resource(Image, "/image/<string:filename>")
 api.add_resource(AvatarUpload, "/upload/avatar")
 api.add_resource(Avatar, "/avatar/<int:user_id>")
+
+# for Customer
+api.add_resource(CrmContactRefundPersonalIdList, "/checkpersonalid/<string:personal_id>")
 
 
 @app.route("/")

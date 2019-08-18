@@ -62,6 +62,10 @@ class CrmContactRefundModel(db.Model):
         return cls.query.filter_by(hyrf_id=_hyrf_id).first()
 
     @classmethod
+    def find_by_personalid(cls, _personal_id: str) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(personcardid=_personal_id).all()
+
+    @classmethod
     def find_all(cls) -> List["CrmContactRefundModel"]:
         return cls.query.all()
 
