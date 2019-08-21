@@ -4,12 +4,16 @@ from flask import send_file, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 import traceback
 import os
+import base64
 
 from libs import image_helper
 from libs.strings import errmsg
 from schemas.image import ImageSchema
+from schemas.crm_refund_docref import CrmRefundDocrefSchema
+from models.crm_refund_docref import CrmRefundDocrefModel
 
 image_schema = ImageSchema()
+docref_schema = CrmRefundDocrefSchema()
 
 
 class ImageUpload(Resource):
@@ -25,12 +29,27 @@ class ImageUpload(Resource):
         data = image_schema.load(request.files)
         # user_id = get_jwt_identity()
         # folder = f"user_{user_id}"
-        folder = "user_1"
+        folder = "customer"
         try:
             # save(self, storage, folder=None, name=None)
             image_path = image_helper.save_image(data["image"], folder=folder)
             # here we only return the basename of the image and hide the internal folder structure from our user
             basename = image_helper.get_basename(image_path)
+
+            # full_path_img = f"static/images{image_path}"
+            full_path_img = f"static/images/{image_path}"
+            with open(full_path_img, "rb") as img_file:
+                img_file = base64.b64encode(img_file.read())
+            # print(my_string)
+
+            img = CrmRefundDocrefModel(img_name=basename, img_file=img_file)
+            try:
+                img.save_to_db()
+            except:
+                return {"message": "XXXX"}, 500
+
+            # return docref_schema.dump(img), 201
+
             return {"message": errmsg("image_uploaded").format(basename)}, 201
         except UploadNotAllowed:  # forbidden file type
             extension = image_helper.get_extension(data["image"])
@@ -46,7 +65,7 @@ class Image(Resource):
         """
         # user_id = get_jwt_identity()
         # folder = f"user_{user_id}"
-        folder = "user_1"
+        folder = "customer"
         # check if filename is URL secure
         if not image_helper.is_filename_safe(filename):
             return {"message": errmsg("image_illegal_file_name").format(filename)}, 400
