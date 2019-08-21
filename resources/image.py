@@ -44,8 +44,9 @@ class Image(Resource):
         This endpoint returns the requested image if exists. It will use JWT to
         retrieve user information and look for the image inside the user's folder.
         """
-        user_id = get_jwt_identity()
-        folder = f"user_{user_id}"
+        # user_id = get_jwt_identity()
+        # folder = f"user_{user_id}"
+        folder = "user_1"
         # check if filename is URL secure
         if not image_helper.is_filename_safe(filename):
             return {"message": errmsg("image_illegal_file_name").format(filename)}, 400
