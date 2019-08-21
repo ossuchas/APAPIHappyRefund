@@ -8,7 +8,7 @@
 !.vscode/extensions.json
 
 # Image
-/static/images/customer/*
+!/static/images/customer/*
 
 # System Files
 .DS_Store
