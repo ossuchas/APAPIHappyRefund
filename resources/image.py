@@ -11,6 +11,7 @@ from libs.strings import errmsg
 from schemas.image import ImageSchema
 from schemas.crm_refund_docref import CrmRefundDocrefSchema
 from models.crm_refund_docref import CrmRefundDocrefModel
+from models.crm_contact_refund import CrmContactRefundModel
 
 image_schema = ImageSchema()
 docref_schema = CrmRefundDocrefSchema()
@@ -27,11 +28,14 @@ class ImageUpload(Resource):
         unused integer. (eg. filename.png to filename_1.png).
         """
         data = image_schema.load(request.files)
-        # user_id = get_jwt_identity()
-        # folder = f"user_{user_id}"
+        _hyrf_id = request.form["hyrf"]
         folder = "customer"
         try:
-            # save(self, storage, folder=None, name=None)
+            hyrf = CrmContactRefundModel.find_by_id(_hyrf_id)
+
+            if not hyrf:
+                return {"message": "Can not find Happy Refund ID"}, 404
+
             image_path = image_helper.save_image(data["image"], folder=folder)
             # here we only return the basename of the image and hide the internal folder structure from our user
             basename = image_helper.get_basename(image_path)
@@ -40,15 +44,12 @@ class ImageUpload(Resource):
             full_path_img = f"static/images/{image_path}"
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
-            # print(my_string)
 
-            img = CrmRefundDocrefModel(img_name=basename, img_file=img_file)
+            img = CrmRefundDocrefModel(img_ref_contact_refund=_hyrf_id, img_name=basename, img_file=img_file)
             try:
                 img.save_to_db()
             except:
-                return {"message": "XXXX"}, 500
-
-            # return docref_schema.dump(img), 201
+                return {"message": errmsg("image_uploaded").format(basename)}, 500
 
             return {"message": errmsg("image_uploaded").format(basename)}, 201
         except UploadNotAllowed:  # forbidden file type
