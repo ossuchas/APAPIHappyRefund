@@ -52,7 +52,7 @@ api.add_resource(CrmContactRefundPersonalIdList, "/checkpersonalid/<string:perso
 
 @app.route("/")
 def hello_world():
-    return "Hello World!"
+    return "Hello World! v.1.1.0"
 
 
 if __name__ == "__main__":
