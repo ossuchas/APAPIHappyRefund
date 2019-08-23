@@ -29,6 +29,7 @@ class ImageUpload(Resource):
         """
         data = image_schema.load(request.files)
         _hyrf_id = request.form["hyrf"]
+        _seqn_no = request.form["seqn_no"]
         folder = "customer"
         try:
             hyrf = CrmContactRefundModel.find_by_id(_hyrf_id)
@@ -39,13 +40,13 @@ class ImageUpload(Resource):
             image_path = image_helper.save_image(data["image"], folder=folder)
             # here we only return the basename of the image and hide the internal folder structure from our user
             basename = image_helper.get_basename(image_path)
+            img_type = image_helper.get_extension(image_path)
 
-            # full_path_img = f"static/images{image_path}"
             full_path_img = f"static/images/{image_path}"
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
 
-            img = CrmRefundDocrefModel(img_ref_contact_refund=_hyrf_id, img_name=basename, img_file=img_file)
+            img = CrmRefundDocrefModel(img_ref_contact_refund=_hyrf_id, img_name=basename, img_file=img_file, img_type=img_type, img_seqn=_seqn_no)
             try:
                 img.save_to_db()
             except:
