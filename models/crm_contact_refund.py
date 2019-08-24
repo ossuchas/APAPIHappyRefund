@@ -65,13 +65,13 @@ class CrmContactRefundModel(db.Model):
     def find_by_personalid(cls, _personal_id: str) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(personcardid=_personal_id).all()
 
-    # @classmethod
-    # def find_by_personalid(cls, _personal_id: str) -> "CrmContactRefundModel":
-    #     return cls.query.filter_by(personcardid=_personal_id).first()
-
     @classmethod
-    def find_by_contract(cls, _contract_id: str) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(contractnumber=_contract_id).all()
+    def find_by_personalid(cls, _personal_id: str) -> "CrmContactRefundModel":
+        return cls.query.filter_by(personcardid=_personal_id).first()
+
+    # @classmethod
+    # def find_by_contract(cls, _contract_id: str) -> List["CrmContactRefundModel"]:
+    #     return cls.query.filter_by(contractnumber=_contract_id).all()
 
     @classmethod
     def find_all(cls) -> List["CrmContactRefundModel"]:
