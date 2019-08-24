@@ -63,4 +63,25 @@ class CrmContactRefundPersonalIdList(Resource):
         return {"message": "No Data Found"}, 404
 
 
+class CrmCustomerRefund(Resource):
+    @classmethod
+    def get(cls, hyrf_id: int):
+        hyrf = CrmContactRefundModel.find_by_id(hyrf_id)
+        if hyrf:
+            return hyrf_schema.dump(hyrf), 200
 
+        return {"message": "No Data Found"}, 404
+
+    @classmethod
+    def put(cls, hyrf_id: int):
+        item_json = request.get_json()
+        hyrf = CrmContactRefundModel.find_by_id(hyrf_id)
+
+        if hyrf:
+            hyrf.doc_sent_status = item_json["doc_sent_status"]
+        else:
+            return {"message": "Can not find Refund ID for update"}, 404
+
+        hyrf.save_to_db()
+
+        return hyrf_schema.dump(hyrf), 200
