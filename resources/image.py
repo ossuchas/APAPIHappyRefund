@@ -30,6 +30,8 @@ class ImageUpload(Resource):
         data = image_schema.load(request.files)
         _hyrf_id = request.form["hyrf"]
         _seqn_no = request.form["seqn_no"]
+        _createby = request.form["createby"]
+        _modifyby = request.form["createby"]
         folder = "customer"
         try:
             hyrf = CrmContactRefundModel.find_by_id(_hyrf_id)
@@ -46,7 +48,15 @@ class ImageUpload(Resource):
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
 
-            img = CrmRefundDocrefModel(img_ref_contact_refund=_hyrf_id, img_name=basename, img_file=img_file, img_type=img_type, img_seqn=_seqn_no)
+            img = CrmRefundDocrefModel(
+                img_ref_contact_refund=_hyrf_id,
+                img_name=basename,
+                img_file=img_file,
+                img_type=img_type,
+                img_seqn=_seqn_no,
+                createby=_createby,
+                modifyby=_modifyby
+            )
             try:
                 img.save_to_db()
             except:
