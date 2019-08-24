@@ -30,8 +30,6 @@ class ImageUpload(Resource):
         data = image_schema.load(request.files)
         _hyrf_id = request.form["hyrf"]
         _seqn_no = request.form["seqn_no"]
-        _createby = request.form["createby"]
-        _modifyby = request.form["createby"]
         folder = "customer"
         try:
             hyrf = CrmContactRefundModel.find_by_id(_hyrf_id)
@@ -53,9 +51,7 @@ class ImageUpload(Resource):
                 img_name=basename,
                 img_file=img_file,
                 img_type=img_type,
-                img_seqn=_seqn_no,
-                createby=_createby,
-                modifyby=_modifyby
+                img_seqn=_seqn_no
             )
             try:
                 img.save_to_db()
