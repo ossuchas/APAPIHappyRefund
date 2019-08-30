@@ -56,8 +56,8 @@ class CrmContactRefundPersonalIdList(Resource):
     @classmethod
     def get(cls, personal_id: str):
         hyrf = CrmContactRefundModel.find_by_personalid(personal_id)
-        _contractnumber = hyrf.contractnumber
         if hyrf:
+            _contractnumber = hyrf.contractnumber
             return hyrf_list_schema.dump(CrmContactRefundModel.find_by_contract(_contractnumber)), 200
 
         return {"message": "No Data Found"}, 404
