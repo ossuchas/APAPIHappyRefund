@@ -10,6 +10,10 @@ from ma import ma
 
 from resources.crm_contact_refund import CrmContactRefund, CrmContactRefundList, CrmContactRefundPersonalIdList, CrmCustomerRefund
 from resources.userauthen import UserLogin
+from resources.crm_contact_refund_tf01 import CrmContactRefundListCSSent, CrmContactRefundTF01, CrmContactRefundListTF01
+from resources.crm_contact_refund_tf02 import CrmContactRefundListTF01Appv, CrmContactRefundTF02, CrmContactRefundListTF02
+from resources.crm_contact_refund_ac01 import CrmContactRefundListTF02Appv, CrmContactRefundAC01, CrmContactRefundListAC01
+from resources.crm_contact_refund_ac02 import CrmContactRefundListAC01Appv, CrmContactRefundAC02, CrmContactRefundListAC02
 from resources.image import ImageUpload, Image, AvatarUpload, Avatar
 from libs.image_helper import IMAGE_SET
 
@@ -49,6 +53,26 @@ api.add_resource(Avatar, "/avatar/<int:user_id>")
 # for Customer
 api.add_resource(CrmContactRefundPersonalIdList, "/checkpersonalid/<string:personal_id>")
 api.add_resource(CrmCustomerRefund, "/senddoc/<int:hyrf_id>")
+
+# For TF01
+api.add_resource(CrmContactRefundListCSSent, "/cssentlist")
+api.add_resource(CrmContactRefundListTF01, "/tf01alllist")
+api.add_resource(CrmContactRefundTF01, "/tf01approved/<int:hyrf_id>")
+
+# For TF02
+api.add_resource(CrmContactRefundListTF01Appv, "/tf01appvlist")
+api.add_resource(CrmContactRefundListTF02, "/tf02alllist")
+api.add_resource(CrmContactRefundTF02, "/tf02approved/<int:hyrf_id>")
+
+# For AC01
+api.add_resource(CrmContactRefundListTF02Appv, "/tf02appvlist")
+api.add_resource(CrmContactRefundListAC01, "/ac01alllist")
+api.add_resource(CrmContactRefundAC01, "/ac01approved/<int:hyrf_id>")
+
+# For AC02
+api.add_resource(CrmContactRefundListAC01Appv, "/ac01appvlist")
+api.add_resource(CrmContactRefundListAC02, "/ac02alllist")
+api.add_resource(CrmContactRefundAC02, "/ac02approved/<int:hyrf_id>")
 
 
 @app.route("/")

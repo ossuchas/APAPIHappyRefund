@@ -77,21 +77,58 @@ class CrmContactRefundModel(db.Model):
     def find_all(cls) -> List["CrmContactRefundModel"]:
         return cls.query.all()
 
+    # for Customer
+    @classmethod
+    def find_all_cs_sent(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(doc_sent_status='Y').all()
+
     @classmethod
     def find_all_tf01_appv(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(tf01_appv_flag='A').all()
+
+    @classmethod
+    def find_all_tf01_rejt(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(tf01_appv_flag='R').all()
+
+    @classmethod
+    def find_all_tf01_all(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter((cls.tf01_appv_flag == 'A') | (cls.tf01_appv_flag == 'R')).all()
 
     @classmethod
     def find_all_tf02_appv(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(tf02_appv_flag='A').all()
 
     @classmethod
+    def find_all_tf02_rejt(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(tf02_appv_flag='R').all()
+
+    @classmethod
+    def find_all_tf02_all(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter((cls.tf02_appv_flag == 'A') | (cls.tf02_appv_flag == 'R')).all()
+
+    @classmethod
     def find_all_ac01_appv(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(ac01_appv_flag='A').all()
 
     @classmethod
+    def find_all_ac01_rejt(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(ac01_appv_flag='R').all()
+
+    @classmethod
+    def find_all_ac01_all(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter((cls.ac01_appv_flag == 'A') | (cls.ac01_appv_flag == 'R')).all()
+
+    @classmethod
     def find_all_ac02_appv(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(ac02_appv_flag='A').all()
+
+    @classmethod
+    def find_all_ac02_rejt(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(ac02_appv_flag='R').all()
+
+    @classmethod
+    def find_all_ac02_all(cls) -> List["CrmContactRefundModel"]:
+        return cls.query.filter((cls.ac02_appv_flag == 'A') | (cls.ac02_appv_flag == 'R')).all()
 
     def save_to_db(self) -> None:
         db.session.add(self)
