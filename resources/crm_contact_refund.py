@@ -58,7 +58,12 @@ class CrmContactRefundPersonalIdList(Resource):
         hyrf = CrmContactRefundModel.find_by_personalid(personal_id)
         if hyrf:
             _contractnumber = hyrf.contractnumber
-            return hyrf_list_schema.dump(CrmContactRefundModel.find_by_contract(_contractnumber)), 200
+            _hyrf = CrmContactRefundModel.validate_id_sent(_contractnumber)
+
+            if not _hyrf:
+                return hyrf_list_schema.dump(CrmContactRefundModel.find_by_contract(_contractnumber)), 200
+            else:
+                return {"message": "Transaction already submit document"}, 404
 
         return {"message": "No Data Found"}, 404
 

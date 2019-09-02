@@ -83,6 +83,10 @@ class CrmContactRefundModel(db.Model):
         return cls.query.filter_by(doc_sent_status='Y').all()
 
     @classmethod
+    def validate_id_sent(cls, _contract_id: str) -> List["CrmContactRefundModel"]:
+        return cls.query.filter_by(contractnumber=_contract_id, doc_sent_status='Y').all()
+
+    @classmethod
     def find_all_tf01_appv(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(tf01_appv_flag='A').all()
 
