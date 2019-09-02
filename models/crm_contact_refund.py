@@ -11,6 +11,7 @@ class CrmContactRefundModel(db.Model):
     unitnumber = db.Column(db.String(10))
     wbsnumber = db.Column(db.String(30))
     contractnumber = db.Column(db.String(20))
+    transfernumber = db.Column(db.String(50))
     transferdateapprove = db.Column(db.DateTime)
     remainingtotalamount = db.Column(db.Float)
     contactid = db.Column(db.String(50))
