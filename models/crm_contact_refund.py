@@ -22,6 +22,7 @@ class CrmContactRefundModel(db.Model):
     lastname = db.Column(db.String(100))
     fullname = db.Column(db.String(255))
     nationality = db.Column(db.String(50))
+    foreigner = db.Column(db.String(2))
     mobile = db.Column(db.String(100))
     email = db.Column(db.String(255))
 
