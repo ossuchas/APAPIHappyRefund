@@ -11,4 +11,8 @@ img_list_schema = CrmRefundDocrefViewSchema(many=True)
 class CrmContactRefundListImgUrl(Resource):
     @classmethod
     def get(cls, hyrf_id: int):
-        return img_list_schema.dump(CrmRefundDocrefViewModel.find_by_id(hyrf_id)), 200
+        hyrf = CrmRefundDocrefViewModel.find_by_id(hyrf_id)
+        if hyrf:
+            return img_list_schema.dump(CrmRefundDocrefViewModel.find_by_id(hyrf_id)), 200
+
+        return {"message": "No Data Found"}, 404
