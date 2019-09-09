@@ -15,7 +15,9 @@ from resources.crm_contact_refund_tf02 import CrmContactRefundListTF01Appv, CrmC
 from resources.crm_contact_refund_ac01 import CrmContactRefundListTF02Appv, CrmContactRefundAC01, CrmContactRefundListAC01
 from resources.crm_contact_refund_ac02 import CrmContactRefundListAC01Appv, CrmContactRefundAC02, CrmContactRefundListAC02
 from resources.vw_crm_refund_docref import CrmContactRefundListImgUrl
+from resources.vw_crm_refund_appv4 import CrmContactRefundAppv4View
 from resources.image import ImageUpload, Image, AvatarUpload, Avatar
+
 from libs.image_helper import IMAGE_SET
 
 app = Flask(__name__)
@@ -77,6 +79,9 @@ api.add_resource(CrmContactRefundAC02, "/ac02approved/<int:hyrf_id>")
 
 # List Image Url
 api.add_resource(CrmContactRefundListImgUrl, "/imageurls/<int:hyrf_id>")
+
+# List Unit Appoved 4
+api.add_resource(CrmContactRefundAppv4View, "/appv4list")
 
 
 @app.route("/")
