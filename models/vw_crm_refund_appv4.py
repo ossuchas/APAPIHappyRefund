@@ -23,4 +23,4 @@ class CrmRefundAppv4ViewModel(db.Model):
 
     @classmethod
     def find_all(cls) -> List["CrmRefundAppv4ViewModel"]:
-        return cls.query.filter_by().all()
+        return cls.query.filter_by().order_by(cls.approvedate4.desc()).all()
