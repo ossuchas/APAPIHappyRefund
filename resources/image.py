@@ -61,30 +61,13 @@ class ImageUpload(Resource):
                 img_file = base64.b64encode(img_file.read())
 
             # Put an object image to MinIO
-            minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
-
-            minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
-            try:
-                minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img)
-            except ResponseError as err:
-                return {"message": errmsg("image_uploaded").format(err)}, 500
-
-            # img = full_path_img;
-            # image_helper.watermark_text(img, img,
-            #                text='ใช้สำหรับรับยอดเงินชำระเกินโครงการ.Pleno พหลฯ-วัชรพล./แปลง A01 เท่านั้น',
-            #                pos=(50, 800))
-
-            # photo = Img.open(full_path_img)
-            # # make the image editable
-            # drawing = ImgD.Draw(photo)
+            # minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
             #
-            # black = (3, 8, 12)
-            # # font_path = "AP-Regular.ttf"
-            # # font = ImgF.truetype(font_path, 30)
-            #
-            # # drawing.text((50, 800), 'test 2222222', fill=black, font=font)
-            # drawing.text((50, 800), 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', fill=black)
-            # photo.save(full_path_img)
+            # minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
+            # try:
+            #     minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img)
+            # except ResponseError as err:
+            #     return {"message": errmsg("image_uploaded").format(err)}, 500
 
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,
@@ -109,20 +92,6 @@ class ImageUpload(Resource):
         except UploadNotAllowed:  # forbidden file type
             extension = image_helper.get_extension(data["image"])
             return {"message": errmsg("image_illegal_extension").format(extension)}, 400
-
-    # def watermark_text(input_image_path, output_image_path, text, pos):
-    #     photo = Image.open(input_image_path)
-    #
-    #     # make the image editable
-    #     drawing = ImageDraw.Draw(photo)
-    #
-    #     black = (3, 8, 12)
-    #     font_path = "AP-Regular.ttf"
-    #     font = ImageFont.truetype(font_path, 30)
-    #
-    #     drawing.text(pos, text, fill=black, font=font)
-    #     photo.show()
-    #     photo.save(output_image_path)
 
 
 class Image(Resource):
