@@ -7,4 +7,5 @@ flask_uploads
 marshmallow==3.0.0rc5
 flask_marshmallow
 marshmallow-sqlalchemy
+minio
 requests
