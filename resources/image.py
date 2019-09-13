@@ -4,6 +4,9 @@ from flask import send_file, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
 from minio import Minio
 from minio.error import ResponseError
+from PIL import Image as Img
+from PIL import ImageDraw as ImgD
+from PIL import ImageFont as ImgF
 
 import traceback
 import os
@@ -48,6 +51,7 @@ class ImageUpload(Resource):
                 return {"message": "Can not find Happy Refund ID"}, 404
 
             image_path = image_helper.save_image(data["image"], folder=folder)
+            # image_path = image_helper.save_watermark_image(data["image"], folder=folder)
             # here we only return the basename of the image and hide the internal folder structure from our user
             basename = image_helper.get_basename(image_path)
             img_type = image_helper.get_extension(image_path)
@@ -65,6 +69,23 @@ class ImageUpload(Resource):
             except ResponseError as err:
                 return {"message": errmsg("image_uploaded").format(err)}, 500
 
+            # img = full_path_img;
+            # image_helper.watermark_text(img, img,
+            #                text='ใช้สำหรับรับยอดเงินชำระเกินโครงการ.Pleno พหลฯ-วัชรพล./แปลง A01 เท่านั้น',
+            #                pos=(50, 800))
+
+            # photo = Img.open(full_path_img)
+            # # make the image editable
+            # drawing = ImgD.Draw(photo)
+            #
+            # black = (3, 8, 12)
+            # # font_path = "AP-Regular.ttf"
+            # # font = ImgF.truetype(font_path, 30)
+            #
+            # # drawing.text((50, 800), 'test 2222222', fill=black, font=font)
+            # drawing.text((50, 800), 'xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx', fill=black)
+            # photo.save(full_path_img)
+
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,
                 img_name=basename,
@@ -77,10 +98,31 @@ class ImageUpload(Resource):
             except:
                 return {"message": errmsg("image_uploaded").format(basename)}, 500
 
+            img = full_path_img
+            full_path_img_water = f"static/images/customer/watermark1.png"
+            image_helper.watermark_with_transparency(img, img, full_path_img_water, position=(50, 50))
+            # image_helper.watermark_text(img, img,
+            #                text='ใช้สำหรับรับยอดเงินชำระเกินโครงการ.Pleno พหลฯ-วัชรพล./แปลง A01 เท่านั้น',
+            #                pos=(50, 800))
+
             return {"message": errmsg("image_uploaded").format(basename)}, 201
         except UploadNotAllowed:  # forbidden file type
             extension = image_helper.get_extension(data["image"])
             return {"message": errmsg("image_illegal_extension").format(extension)}, 400
+
+    # def watermark_text(input_image_path, output_image_path, text, pos):
+    #     photo = Image.open(input_image_path)
+    #
+    #     # make the image editable
+    #     drawing = ImageDraw.Draw(photo)
+    #
+    #     black = (3, 8, 12)
+    #     font_path = "AP-Regular.ttf"
+    #     font = ImageFont.truetype(font_path, 30)
+    #
+    #     drawing.text(pos, text, fill=black, font=font)
+    #     photo.show()
+    #     photo.save(output_image_path)
 
 
 class Image(Resource):

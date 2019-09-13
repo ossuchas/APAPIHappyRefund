@@ -2,10 +2,51 @@ import os
 import re
 from typing import Union
 from werkzeug.datastructures import FileStorage
+from PIL import Image
+from PIL import ImageDraw
+from PIL import ImageFont
 
 from flask_uploads import UploadSet, IMAGES, config_for_set, configure_uploads, patch_request_class
 
 IMAGE_SET = UploadSet("images", IMAGES)  # set name and allowed extensions
+
+
+def watermark_with_transparency(input_image_path,
+                                output_image_path,
+                                watermark_image_path,
+                                position):
+    base_image = Image.open(input_image_path)
+    watermark = Image.open(watermark_image_path)
+    width, height = base_image.size
+
+    # transparent = Image.new('RGBA', (width, height), (0, 0, 0, 0))
+    transparent = Image.new('RGB', (width, height), (0, 0, 0, 0))
+    transparent.paste(base_image, (0, 0))
+    transparent.paste(watermark, position, mask=watermark)
+    # transparent.show()
+    transparent.save(output_image_path)
+    # base_image = Image.open(input_image_path)
+    # watermark = Image.open(watermark_image_path)
+    #
+    # # add watermark to your image
+    # base_image.paste(watermark, position)
+    # # base_image.show()
+    # base_image.save(output_image_path)
+
+
+def watermark_text(input_image_path, output_image_path, text, pos):
+    photo = Image.open(input_image_path)
+
+    # make the image editable
+    drawing = ImageDraw.Draw(photo)
+
+    black = (3, 8, 12)
+    font_path = "AP-Regular.ttf"
+    font = ImageFont.truetype(font_path, 30)
+
+    drawing.text(pos, text, fill=black, font=font)
+    # photo.show()
+    photo.save(output_image_path)
 
 
 def save_image(image: FileStorage, folder: str = None, name: str = None) -> str:
