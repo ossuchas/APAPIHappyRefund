@@ -86,7 +86,7 @@ api.add_resource(CrmContactRefundAppv4View, "/appv4list")
 
 @app.route("/")
 def hello_world():
-    return "Hello World! v.1.1.0"
+    return "Happy Refund v.1.0.0"
 
 
 if __name__ == "__main__":
