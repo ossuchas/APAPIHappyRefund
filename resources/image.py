@@ -2,9 +2,14 @@ from flask_restful import Resource
 from flask_uploads import UploadNotAllowed
 from flask import send_file, request
 from flask_jwt_extended import jwt_required, get_jwt_identity
+from minio import Minio
+from minio.error import ResponseError
+
 import traceback
 import os
 import base64
+
+import uuid
 
 from libs import image_helper
 from libs.strings import errmsg
@@ -15,6 +20,11 @@ from models.crm_contact_refund import CrmContactRefundModel
 
 image_schema = ImageSchema()
 docref_schema = CrmRefundDocrefSchema()
+
+MINIO_ENDPOINT=os.environ.get("MINIO_ENDPOINT")
+MINIO_ACCESS_KEY=os.environ.get("MINIO_ACCESS_KEY")
+MINIO_SECRET_KEY=os.environ.get("MINIO_SECRET_KEY")
+MINIO_BUCKET_NAME=os.environ.get("MINIO_BUCKET_NAME")
 
 
 class ImageUpload(Resource):
@@ -45,6 +55,15 @@ class ImageUpload(Resource):
             full_path_img = f"static/images/{image_path}"
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
+
+            # Put an object image to MinIO
+            minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
+
+            minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
+            try:
+                minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img)
+            except ResponseError as err:
+                return {"message": errmsg("image_uploaded").format(err)}, 500
 
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,
