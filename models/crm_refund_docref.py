@@ -14,6 +14,7 @@ class CrmRefundDocrefModel(db.Model):
     img_file = db.Column(db.VARBINARY(max))
     minio_bucket_name = db.Column(db.String(255))
     minio_img_file_name = db.Column(db.String(255))
+    minio_img_url = db.Column(db.String(4000))
     createby = db.Column(db.String(50), default='flask_api')
     createdate = db.Column(db.DateTime, default=datetime.now)
     modifyby = db.Column(db.String(50), default='flask_api')

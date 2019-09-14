@@ -11,6 +11,7 @@ from PIL import ImageFont as ImgF
 import traceback
 import os
 import base64
+from datetime import timedelta
 
 import uuid
 
@@ -60,12 +61,17 @@ class ImageUpload(Resource):
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
 
+            img = full_path_img
+            full_path_img_water = f"static/images/customer/watermark1.png"
+            image_helper.watermark_with_transparency(img, img, full_path_img_water, position=(50, 50))
+
             # Put an object image to MinIO
             minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
 
             minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
             try:
-                minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img)
+                minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img, content_type='image/jpeg')
+                minionUrl = minioClient.presigned_get_object(MINIO_BUCKET_NAME, minioFileName, expires=timedelta(days=7))
             except ResponseError as err:
                 return {"message": errmsg("image_uploaded").format(err)}, 500
 
@@ -76,19 +82,14 @@ class ImageUpload(Resource):
                 img_type=img_type,
                 img_seqn=_seqn_no,
                 minio_bucket_name=MINIO_BUCKET_NAME,
-                minio_img_file_name=minioFileName
+                minio_img_file_name=minioFileName,
+                minio_img_url=minionUrl
             )
             try:
                 img.save_to_db()
             except:
                 return {"message": errmsg("image_uploaded").format(basename)}, 500
 
-            img = full_path_img
-            full_path_img_water = f"static/images/customer/watermark1.png"
-            image_helper.watermark_with_transparency(img, img, full_path_img_water, position=(50, 50))
-            # image_helper.watermark_text(img, img,
-            #                text='ใช้สำหรับรับยอดเงินชำระเกินโครงการ.Pleno พหลฯ-วัชรพล./แปลง A01 เท่านั้น',
-            #                pos=(50, 800))
 
             return {"message": errmsg("image_uploaded").format(basename)}, 201
         except UploadNotAllowed:  # forbidden file type
