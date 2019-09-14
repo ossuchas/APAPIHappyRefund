@@ -52,7 +52,6 @@ class ImageUpload(Resource):
                 return {"message": "Can not find Happy Refund ID"}, 404
 
             image_path = image_helper.save_image(data["image"], folder=folder)
-            # image_path = image_helper.save_watermark_image(data["image"], folder=folder)
             # here we only return the basename of the image and hide the internal folder structure from our user
             basename = image_helper.get_basename(image_path)
             img_type = image_helper.get_extension(image_path)
@@ -61,19 +60,21 @@ class ImageUpload(Resource):
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
 
-            img = full_path_img
             full_path_img_water = f"static/images/customer/watermark1.png"
-            image_helper.watermark_with_transparency(img, img, full_path_img_water, position=(50, 50))
+            image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water)
+
+            minioFileName = None
+            minioUrl = None
 
             # Put an object image to MinIO
-            minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
-
-            minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
-            try:
-                minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img, content_type='image/jpeg')
-                minionUrl = minioClient.presigned_get_object(MINIO_BUCKET_NAME, minioFileName, expires=timedelta(days=7))
-            except ResponseError as err:
-                return {"message": errmsg("image_uploaded").format(err)}, 500
+            # minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
+            #
+            # minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
+            # try:
+            #     minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img, content_type='image/jpeg')
+            #     minioUrl = minioClient.presigned_get_object(MINIO_BUCKET_NAME, minioFileName, expires=timedelta(days=7))
+            # except ResponseError as err:
+            #     return {"message": errmsg("image_uploaded").format(err)}, 500
 
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,
@@ -83,13 +84,12 @@ class ImageUpload(Resource):
                 img_seqn=_seqn_no,
                 minio_bucket_name=MINIO_BUCKET_NAME,
                 minio_img_file_name=minioFileName,
-                minio_img_url=minionUrl
+                minio_img_url=minioUrl
             )
             try:
                 img.save_to_db()
             except:
                 return {"message": errmsg("image_uploaded").format(basename)}, 500
-
 
             return {"message": errmsg("image_uploaded").format(basename)}, 201
         except UploadNotAllowed:  # forbidden file type
