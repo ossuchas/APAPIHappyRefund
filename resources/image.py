@@ -61,13 +61,13 @@ class ImageUpload(Resource):
                 img_file = base64.b64encode(img_file.read())
 
             # Put an object image to MinIO
-            # minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
-            #
-            # minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
-            # try:
-            #     minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img)
-            # except ResponseError as err:
-            #     return {"message": errmsg("image_uploaded").format(err)}, 500
+            minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
+
+            minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
+            try:
+                minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img)
+            except ResponseError as err:
+                return {"message": errmsg("image_uploaded").format(err)}, 500
 
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,

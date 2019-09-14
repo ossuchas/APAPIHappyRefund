@@ -1,17 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c0a779e8-5fa4-4441-9d80-07869b1c6034" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/models/crm_contact_refund.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/crm_contact_refund.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/suchat.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/suchat_1.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/suchat_2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/suchat_3.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/suchat_4.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/suchat_5.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/suchat_6.jpg" beforeDir="false" />
-    </list>
+    <list default="true" id="c0a779e8-5fa4-4441-9d80-07869b1c6034" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -20,7 +10,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/APAPIHappyRefund$image_helper.coverage" NAME="image_helper Coverage Results" MODIFIED="1568376101585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
-    <SUITE FILE_PATH="coverage/APAPIHappyRefund$app.coverage" NAME="app Coverage Results" MODIFIED="1568426470570" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/APAPIHappyRefund$app.coverage" NAME="app Coverage Results" MODIFIED="1568427503973" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/APAPIHappyRefund$image.coverage" NAME="image Coverage Results" MODIFIED="1568367576837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/resources" />
     <SUITE FILE_PATH="coverage/APAPIHappyRefund$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1567848015524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
@@ -67,7 +57,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/models/crm_contact_refund.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
+            <state relative-caret-position="325">
               <caret line="144" selection-start-line="144" selection-end-line="144" />
               <folding>
                 <element signature="e#0#17#0" expanded="true" />
@@ -384,7 +374,7 @@
       <workItem from="1568293098629" duration="841000" />
       <workItem from="1568331702749" duration="14325000" />
       <workItem from="1568413349028" duration="2091000" />
-      <workItem from="1568423768026" duration="2608000" />
+      <workItem from="1568423768026" duration="4740000" />
     </task>
     <task id="LOCAL-00001" summary="change version Happy Refund root route">
       <created>1568413503588</created>
@@ -397,7 +387,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="114581000" />
+    <option name="totallyTimeSpent" value="116713000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -417,7 +407,7 @@
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.33551556" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33551556" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -824,7 +814,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/models/crm_contact_refund.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
+        <state relative-caret-position="325">
           <caret line="144" selection-start-line="144" selection-end-line="144" />
           <folding>
             <element signature="e#0#17#0" expanded="true" />
