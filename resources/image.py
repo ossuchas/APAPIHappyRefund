@@ -74,7 +74,9 @@ class ImageUpload(Resource):
                 img_name=basename,
                 img_file=img_file,
                 img_type=img_type,
-                img_seqn=_seqn_no
+                img_seqn=_seqn_no,
+                minio_bucket_name=MINIO_BUCKET_NAME,
+                minio_img_file_name=minioFileName
             )
             try:
                 img.save_to_db()
