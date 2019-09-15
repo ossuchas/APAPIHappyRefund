@@ -29,6 +29,7 @@ MINIO_ENDPOINT=os.environ.get("MINIO_ENDPOINT")
 MINIO_ACCESS_KEY=os.environ.get("MINIO_ACCESS_KEY")
 MINIO_SECRET_KEY=os.environ.get("MINIO_SECRET_KEY")
 MINIO_BUCKET_NAME=os.environ.get("MINIO_BUCKET_NAME")
+MINIO_FLAG=os.environ.get("MINIO_FLAG")
 
 
 class ImageUpload(Resource):
@@ -67,14 +68,14 @@ class ImageUpload(Resource):
             minioUrl = None
 
             # Put an object image to MinIO
-            # minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
-            #
-            # minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
-            # try:
-            #     minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img, content_type='image/jpeg')
-            #     minioUrl = minioClient.presigned_get_object(MINIO_BUCKET_NAME, minioFileName, expires=timedelta(days=7))
-            # except ResponseError as err:
-            #     return {"message": errmsg("image_uploaded").format(err)}, 500
+            if MINIO_FLAG == "Y":
+                minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
+                minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
+                try:
+                    minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img, content_type='image/jpeg')
+                    minioUrl = minioClient.presigned_get_object(MINIO_BUCKET_NAME, minioFileName, expires=timedelta(days=7))
+                except ResponseError as err:
+                    return {"message": errmsg("image_uploaded").format(err)}, 500
 
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,
