@@ -58,10 +58,11 @@ class ImageUpload(Resource):
             img_type = image_helper.get_extension(image_path)
 
             full_path_img = f"static/images/{image_path}"
-            with open(full_path_img, "rb") as img_file:
+            with open(full_path_img, "rb") as img_file
                 img_file = base64.b64encode(img_file.read())
 
-            full_path_img_water = f"static/images/customer/watermark1.png"
+            # full_path_img_water = f"static/images/customer/watermark1.png"
+            full_path_img_water = f"static/images/customer/watermark_A.png"
             image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water)
 
             minioFileName = None
