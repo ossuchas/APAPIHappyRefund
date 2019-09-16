@@ -2,35 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0a779e8-5fa4-4441-9d80-07869b1c6034" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_A.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AA.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AB.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AC.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AE.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AG.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AH.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AI.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AJ.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AK.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AL.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AM.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AO.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AP.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AQ.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AR.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AS.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AT.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AU.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AV.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_AW.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_F.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_H.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_J.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_T.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/static/images/customer/watermark_Y.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/models/crm_contact_refund.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/crm_contact_refund.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/resources/image.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/image.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -40,7 +13,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/APAPIHappyRefund$image_helper.coverage" NAME="image_helper Coverage Results" MODIFIED="1568376101585" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/libs" />
-    <SUITE FILE_PATH="coverage/APAPIHappyRefund$app.coverage" NAME="app Coverage Results" MODIFIED="1568635755950" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/APAPIHappyRefund$app.coverage" NAME="app Coverage Results" MODIFIED="1568637657278" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/APAPIHappyRefund$image.coverage" NAME="image Coverage Results" MODIFIED="1568367576837" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/resources" />
     <SUITE FILE_PATH="coverage/APAPIHappyRefund$Flask__app_py_.coverage" NAME="Flask (app.py) Coverage Results" MODIFIED="1567848015524" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
@@ -60,13 +33,25 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/resources/image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="189">
-              <caret line="60" column="53" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
+            <state relative-caret-position="155">
+              <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/models/crm_contact_refund.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="170">
+              <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+              <folding>
+                <element signature="e#0#17#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -150,11 +135,11 @@
         <option value="$PROJECT_DIR$/docker-compose.yml" />
         <option value="$PROJECT_DIR$/requirements.txt" />
         <option value="$PROJECT_DIR$/app.py" />
-        <option value="$PROJECT_DIR$/models/crm_contact_refund.py" />
         <option value="$PROJECT_DIR$/models/crm_refund_docref.py" />
         <option value="$PROJECT_DIR$/libs/image_helper.py" />
         <option value="$PROJECT_DIR$/.env" />
         <option value="$PROJECT_DIR$/resources/image.py" />
+        <option value="$PROJECT_DIR$/models/crm_contact_refund.py" />
       </list>
     </option>
   </component>
@@ -198,19 +183,6 @@
               <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
               <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
-              <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
-              <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
-              <item name="static" type="462c0819:PsiDirectoryNode" />
-              <item name="images" type="462c0819:PsiDirectoryNode" />
-              <item name="customer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -410,7 +382,7 @@
       <workItem from="1568436805138" duration="4396000" />
       <workItem from="1568499126517" duration="3549000" />
       <workItem from="1568523339620" duration="2245000" />
-      <workItem from="1568635681240" duration="887000" />
+      <workItem from="1568635681240" duration="1595000" />
     </task>
     <task id="LOCAL-00001" summary="change version Happy Refund root route">
       <created>1568413503588</created>
@@ -423,7 +395,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="127790000" />
+    <option name="totallyTimeSpent" value="128498000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -436,13 +408,14 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.22919819" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.33551556" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.33551556" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.39934534" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -770,16 +743,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/models/crm_contact_refund.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="529">
-          <caret line="144" selection-start-line="144" selection-end-line="144" />
-          <folding>
-            <element signature="e#0#17#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/models/crm_refund_docref.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -838,10 +801,20 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="60" column="53" selection-start-line="60" selection-start-column="53" selection-end-line="60" selection-end-column="53" />
+        <state relative-caret-position="155">
+          <caret line="55" column="54" selection-start-line="55" selection-start-column="54" selection-end-line="55" selection-end-column="54" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/models/crm_contact_refund.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="10" column="4" selection-start-line="10" selection-start-column="4" selection-end-line="10" selection-end-column="4" />
+          <folding>
+            <element signature="e#0#17#0" expanded="true" />
           </folding>
         </state>
       </provider>
