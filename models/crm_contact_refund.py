@@ -8,6 +8,7 @@ class CrmContactRefundModel(db.Model):
     hyrf_id = db.Column(db.Integer, primary_key=True)
     productid = db.Column(db.String(15))
     project = db.Column(db.String(255))
+    companyid = db.Column(db.String(15))
     unitnumber = db.Column(db.String(10))
     wbsnumber = db.Column(db.String(30))
     contractnumber = db.Column(db.String(20))

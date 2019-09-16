@@ -52,6 +52,8 @@ class ImageUpload(Resource):
             if not hyrf:
                 return {"message": "Can not find Happy Refund ID"}, 404
 
+            print(hyrf.companyid)
+
             image_path = image_helper.save_image(data["image"], folder=folder)
             # here we only return the basename of the image and hide the internal folder structure from our user
             basename = image_helper.get_basename(image_path)
@@ -61,7 +63,8 @@ class ImageUpload(Resource):
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
 
-            full_path_img_water = f"static/images/customer/watermark1.png"
+            # full_path_img_water = f"static/images/customer/watermark1.png"
+            full_path_img_water = "static/images/customer/watermark_{}.png".format(hyrf.companyid)
             image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water)
 
             minioFileName = None
