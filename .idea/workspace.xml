@@ -3,6 +3,32 @@
   <component name="ChangeListManager">
     <list default="true" id="c0a779e8-5fa4-4441-9d80-07869b1c6034" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_A.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AA.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AB.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AC.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AE.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AG.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AH.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AI.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AJ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AK.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AL.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AM.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AO.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AP.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AQ.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AR.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AS.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AT.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AU.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AV.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_AW.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_F.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_H.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_J.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_T.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/static/images/customer/watermark_Y.png" beforeDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -59,8 +85,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/crm_contact_refund.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="255">
+              <caret line="66" column="76" selection-start-line="66" selection-start-column="76" selection-end-line="66" selection-end-column="76" />
               <folding>
                 <element signature="e#0#16#0" expanded="true" />
               </folding>
@@ -180,22 +206,20 @@
             <path>
               <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
               <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
-              <item name="libs" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
-              <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
-              <item name="models" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
-              <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
               <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
               <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="APAPIHappyRefund" type="b2602c69:ProjectViewProjectNode" />
+              <item name="APAPIHappyRefund" type="462c0819:PsiDirectoryNode" />
+              <item name="static" type="462c0819:PsiDirectoryNode" />
+              <item name="images" type="462c0819:PsiDirectoryNode" />
+              <item name="customer" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -400,6 +424,9 @@
       <workItem from="1568668927431" duration="2771000" />
       <workItem from="1568681556598" duration="1336000" />
       <workItem from="1568722726392" duration="753000" />
+      <workItem from="1568756233891" duration="1464000" />
+      <workItem from="1568764877491" duration="659000" />
+      <workItem from="1568807123651" duration="412000" />
     </task>
     <task id="LOCAL-00001" summary="change version Happy Refund root route">
       <created>1568413503588</created>
@@ -412,7 +439,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="134305000" />
+    <option name="totallyTimeSpent" value="136840000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -425,9 +452,8 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24054463" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25189108" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
@@ -441,7 +467,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49924356" weight="0.32569557" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33551556" />
+      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33551556" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -825,8 +851,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/crm_contact_refund.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="255">
+          <caret line="66" column="76" selection-start-line="66" selection-start-column="76" selection-end-line="66" selection-end-column="76" />
           <folding>
             <element signature="e#0#16#0" expanded="true" />
           </folding>
