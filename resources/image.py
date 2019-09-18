@@ -52,8 +52,6 @@ class ImageUpload(Resource):
             if not hyrf:
                 return {"message": "Can not find Happy Refund ID"}, 404
 
-            print(hyrf.companyid)
-
             image_path = image_helper.save_image(data["image"], folder=folder)
             # here we only return the basename of the image and hide the internal folder structure from our user
             basename = image_helper.get_basename(image_path)

@@ -14,7 +14,13 @@ IMAGE_SET = UploadSet("images", IMAGES)  # set name and allowed extensions
 def watermark_with_transparency(input_image_path: str = None,
                                 output_image_path: str = None,
                                 watermark_image_path: str = None) -> str:
-    base_image = Image.open(input_image_path)
+
+    size=(1024, 768)
+    original_image = Image.open(input_image_path)
+
+    base_image = original_image.resize(size)
+
+    # base_image = Image.open(input_image_path)
     watermark = Image.open(watermark_image_path)
     width, height = base_image.size
     mark_width, mark_height = watermark.size
