@@ -45,6 +45,7 @@ class ImageUpload(Resource):
         data = image_schema.load(request.files)
         _hyrf_id = request.form["hyrf"]
         _seqn_no = request.form["seqn_no"]
+        _isMobile = request.form["isMobile"]
         folder = "customer"
         try:
             hyrf = CrmContactRefundModel.find_by_id(_hyrf_id)
@@ -63,7 +64,7 @@ class ImageUpload(Resource):
 
             # full_path_img_water = f"static/images/customer/watermark1.png"
             full_path_img_water = "static/images/customer/watermark_{}.png".format(hyrf.companyid)
-            image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water)
+            image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water, _isMobile)
 
             minioFileName = None
             minioUrl = None
