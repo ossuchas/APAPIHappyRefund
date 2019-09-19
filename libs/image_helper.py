@@ -13,15 +13,19 @@ IMAGE_SET = UploadSet("images", IMAGES)  # set name and allowed extensions
 
 def watermark_with_transparency(input_image_path: str = None,
                                 output_image_path: str = None,
-                                watermark_image_path: str = None) -> str:
+                                watermark_image_path: str = None,
+                                isMobile: str = None) -> str:
 
     size = (1024, 768)
     original_image = Image.open(input_image_path)
 
     resize_image = original_image.resize(size)
 
-    angle = 270
-    base_image = resize_image.rotate(angle, expand=True)
+    if isMobile == '1':
+        angle = 270
+        base_image = resize_image.rotate(angle, expand=True)
+    else:
+        base_image = resize_image;
 
     watermark = Image.open(watermark_image_path)
     width, height = base_image.size
