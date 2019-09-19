@@ -20,6 +20,7 @@ class CrmRefundAppv4ViewModel(db.Model):
     email = db.Column(db.String(255))
     approvedate4 = db.Column(db.DateTime)
     approve4by = db.Column(db.String(128))
+    refundstatus = db.Column(db.String(200))
 
     @classmethod
     def find_all(cls) -> List["CrmRefundAppv4ViewModel"]:
