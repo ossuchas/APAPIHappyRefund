@@ -93,7 +93,7 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
+            <state relative-caret-position="308">
               <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
               <folding>
                 <element signature="e#0#32#0" expanded="true" />
@@ -416,7 +416,7 @@
       <workItem from="1568756233891" duration="1464000" />
       <workItem from="1568764877491" duration="659000" />
       <workItem from="1568807123651" duration="2059000" />
-      <workItem from="1568851361925" duration="1727000" />
+      <workItem from="1568851361925" duration="2840000" />
     </task>
     <task id="LOCAL-00001" summary="change version Happy Refund root route">
       <created>1568413503588</created>
@@ -429,7 +429,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="140214000" />
+    <option name="totallyTimeSpent" value="141327000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -442,6 +442,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25567323" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -457,7 +458,7 @@
       <window_info anchor="bottom" id="Version Control" order="8" sideWeight="0.49924356" weight="0.32569557" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Event Log" order="10" sideWeight="0.50075644" side_tool="true" weight="0.3289689" />
-      <window_info anchor="bottom" id="Terminal" order="11" visible="true" weight="0.33551556" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.33551556" />
       <window_info anchor="bottom" id="Python Console" order="12" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -565,7 +566,6 @@
     </expressions>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/.gitignore" />
     <entry file="file://$PROJECT_DIR$/resources/crm_contact_refund_tf01.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="255">
@@ -837,9 +837,12 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/static/images/customer/watermark_A.png">
+      <provider selected="true" editor-type-id="images" />
+    </entry>
     <entry file="file://$PROJECT_DIR$/app.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
+        <state relative-caret-position="308">
           <caret line="86" column="14" selection-start-line="86" selection-start-column="14" selection-end-line="86" selection-end-column="14" />
           <folding>
             <element signature="e#0#32#0" expanded="true" />
