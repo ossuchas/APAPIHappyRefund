@@ -95,7 +95,10 @@ class CrmContactRefundModel(db.Model):
     # for Customer
     @classmethod
     def find_all_cs_sent(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(doc_sent_status='Y').order_by(cls.modifydate.desc()).all()
+        # return cls.query.filter_by(doc_sent_status='Y').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter((cls.tf01_appv_flag == 'N') |
+                                (cls.tf01_appv_flag == 'R'),
+                                (cls.doc_sent_status == 'Y')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def validate_id_sent(cls, _contract_id: str) -> List["CrmContactRefundModel"]:
@@ -111,7 +114,9 @@ class CrmContactRefundModel(db.Model):
 
     @classmethod
     def find_all_tf01_all(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter((cls.tf01_appv_flag == 'A') | (cls.tf01_appv_flag == 'R')).order_by(cls.modifydate.desc()).all()
+        return cls.query.filter((cls.tf02_appv_flag == 'N') |
+                                (cls.tf02_appv_flag == 'R'),
+                                (cls.tf01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_tf02_appv(cls) -> List["CrmContactRefundModel"]:
@@ -123,7 +128,9 @@ class CrmContactRefundModel(db.Model):
 
     @classmethod
     def find_all_tf02_all(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter((cls.tf02_appv_flag == 'A') | (cls.tf02_appv_flag == 'R')).order_by(cls.modifydate.desc()).all()
+        return cls.query.filter((cls.ac01_appv_flag == 'N') |
+                                (cls.ac01_appv_flag == 'R'),
+                                (cls.tf02_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac01_appv(cls) -> List["CrmContactRefundModel"]:
@@ -135,7 +142,9 @@ class CrmContactRefundModel(db.Model):
 
     @classmethod
     def find_all_ac01_all(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter((cls.ac01_appv_flag == 'A') | (cls.ac01_appv_flag == 'R')).order_by(cls.modifydate.desc()).all()
+        return cls.query.filter((cls.ac02_appv_flag == 'N') |
+                                (cls.ac02_appv_flag == 'R'),
+                                (cls.ac01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac02_appv(cls) -> List["CrmContactRefundModel"]:
