@@ -118,7 +118,7 @@ class CrmContactRefundModel(db.Model):
         #                         (cls.tf02_appv_flag == 'R'),
         #                         (cls.tf01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
-            (cls.tf02_appv_flag == 'N') |
+            (cls.tf02_appv_flag == 'N'),
             (cls.tf01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
@@ -135,7 +135,7 @@ class CrmContactRefundModel(db.Model):
         #                         (cls.ac01_appv_flag == 'R'),
         #                         (cls.tf02_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
-            (cls.ac01_appv_flag == 'N') |
+            (cls.ac01_appv_flag == 'N'),
             (cls.tf02_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
@@ -152,7 +152,7 @@ class CrmContactRefundModel(db.Model):
         #                         (cls.ac02_appv_flag == 'R'),
         #                         (cls.ac01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
-            (cls.ac02_appv_flag == 'N') |
+            (cls.ac02_appv_flag == 'N'),
             (cls.ac01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
