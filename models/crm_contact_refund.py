@@ -98,7 +98,7 @@ class CrmContactRefundModel(db.Model):
         return cls.query.filter(
             (cls.tf01_appv_flag == 'N') | (cls.tf01_appv_flag == 'R') |
             (cls.tf02_appv_flag == 'R') | (cls.ac01_appv_flag == 'R'),
-            (cls.doc_sent_status == 'Y')).order_by(cls.modifydate.desc()).all()
+            (cls.doc_sent_status == 'Y') | (cls.doc_sent_status == 'P')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def validate_id_sent(cls, _contract_id: str) -> List["CrmContactRefundModel"]:
