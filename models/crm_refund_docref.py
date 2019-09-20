@@ -28,6 +28,20 @@ class CrmRefundDocrefModel(db.Model):
         db.session.add(self)
         db.session.commit()
 
+        # Update Status Document to Process
+        sql_statement = """
+        EXECUTE [dbo].[sp_crm_procrefund_docref] @img_ref_contact_refund = {}
+        """.format(self.img_ref_contact_refund)
+        db.session.execute(sql_statement)
+        db.session.commit()
+
+    def exec_to_db(self) -> None:
+        sql_statement = """
+        EXECUTE [dbo].[sp_crm_procrefund_docref] @img_ref_contact_refund = {}
+        """.format(self.img_ref_contact_refund)
+        db.session.execute(sql_statement)
+        db.session.commit()
+
     def delete_from_db(self) -> None:
         db.session.delete(self)
         db.session.commit()

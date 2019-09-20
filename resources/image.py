@@ -91,6 +91,7 @@ class ImageUpload(Resource):
             )
             try:
                 img.save_to_db()
+                # img.exec_to_db()
             except:
                 return {"message": errmsg("image_uploaded").format(basename)}, 500
 
