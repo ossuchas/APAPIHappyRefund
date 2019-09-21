@@ -30,6 +30,7 @@ MINIO_ACCESS_KEY=os.environ.get("MINIO_ACCESS_KEY")
 MINIO_SECRET_KEY=os.environ.get("MINIO_SECRET_KEY")
 MINIO_BUCKET_NAME=os.environ.get("MINIO_BUCKET_NAME")
 MINIO_FLAG=os.environ.get("MINIO_FLAG")
+URL_PUBLIC_VIEW=os.environ.get("URL_PUBLIC_VIEW")
 
 
 class ImageUpload(Resource):
@@ -47,6 +48,9 @@ class ImageUpload(Resource):
         _seqn_no = request.form["seqn_no"]
         _isMobile = request.form["isMobile"]
         folder = "customer"
+        pdf_folder = "img2pdf"
+        hyrf_id_prefix = "{}_".format(_hyrf_id)
+
         try:
             hyrf = CrmContactRefundModel.find_by_id(_hyrf_id)
 
@@ -59,10 +63,10 @@ class ImageUpload(Resource):
             img_type = image_helper.get_extension(image_path)
 
             full_path_img = f"static/images/{image_path}"
+            full_path_img2pdf = r"static/images/{}".format(pdf_folder)
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
 
-            # full_path_img_water = f"static/images/customer/watermark1.png"
             full_path_img_water = "static/images/customer/watermark_{}.png".format(hyrf.companyid)
             image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water, _isMobile)
 
@@ -72,7 +76,8 @@ class ImageUpload(Resource):
             # Put an object image to MinIO
             if MINIO_FLAG == "Y":
                 minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
-                minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
+                # minioFileName = "{}_{}{}".format(uuid.uuid1().hex, _hyrf_id, img_type)
+                minioFileName = "{}_{}{}".format(_hyrf_id, uuid.uuid1(), img_type)
                 try:
                     minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img, content_type='image/jpeg')
                     minioUrl = minioClient.presigned_get_object(MINIO_BUCKET_NAME, minioFileName, expires=timedelta(days=7))
@@ -92,6 +97,18 @@ class ImageUpload(Resource):
             try:
                 img.save_to_db()
                 # img.exec_to_db()
+                pdf_file_name = image_helper.save_image_to_pdf(
+                    hyrf_id_prefix,
+                    full_path_img2pdf,
+                    MINIO_BUCKET_NAME,
+                    MINIO_ENDPOINT,
+                    MINIO_ACCESS_KEY,
+                    MINIO_SECRET_KEY
+                )
+
+                # Update combile image to pdf
+                hyrf.doc_merge_url = r"{}{}".format(URL_PUBLIC_VIEW, pdf_file_name)
+                hyrf.save_to_db()
             except:
                 return {"message": errmsg("image_uploaded").format(basename)}, 500
 

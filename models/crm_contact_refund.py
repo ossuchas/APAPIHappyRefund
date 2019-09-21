@@ -61,6 +61,7 @@ class CrmContactRefundModel(db.Model):
 
     doc_sent_status = db.Column(db.String(2))
     doc_sent_date = db.Column(db.DateTime)
+    doc_merge_url = db.Column(db.String(255))
 
     tran_status = db.Column(db.String(2))
     createby = db.Column(db.String(50))

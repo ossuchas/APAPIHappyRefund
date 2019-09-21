@@ -5,6 +5,11 @@ from werkzeug.datastructures import FileStorage
 from PIL import Image
 from PIL import ImageDraw
 from PIL import ImageFont
+import uuid
+import glob
+
+from minio import Minio
+from minio.error import ResponseError
 
 from flask_uploads import UploadSet, IMAGES, config_for_set, configure_uploads, patch_request_class
 
@@ -39,6 +44,61 @@ def watermark_with_transparency(input_image_path: str = None,
     transparent.save(output_image_path)
 
     return
+
+
+def save_image_to_pdf(hyrf_id_prefix: str = None,
+                      full_path_img2pdf: str = None,
+                      MINIO_BUCKET_NAME: str =None,
+                      MINIO_ENDPOINT: str = None,
+                      MINIO_ACCESS_KEY: str = None,
+                      MINIO_SECRET_KEY: str = None) -> str:
+
+    file_extension = ".pdf"
+
+    minioClient = Minio(MINIO_ENDPOINT, access_key=MINIO_ACCESS_KEY, secret_key=MINIO_SECRET_KEY, secure=None)
+
+    objects = minioClient.list_objects(MINIO_BUCKET_NAME, prefix=hyrf_id_prefix, recursive=True)
+
+    files = []
+    for obj in objects:
+        try:
+            # file_full_path = r'.\\' + obj.object_name
+            file_full_path = r"{}/{}".format(full_path_img2pdf, obj.object_name)
+            files.append(obj.object_name)
+            minioClient.fget_object(MINIO_BUCKET_NAME, obj.object_name, file_full_path)
+        except ResponseError as err:
+            print(err)
+
+    images = []
+
+    for f in files:
+        file_full_path = r"{}/{}".format(full_path_img2pdf, f)
+        im = Image.open(file_full_path)
+        if im.mode == "RGBA":
+            im = im.convert("RGB")
+        images.append(im)
+
+    minioFileName = "{}{}".format(uuid.uuid1().hex, file_extension)
+    file_full_path_minio = "{}/{}".format(full_path_img2pdf, minioFileName)
+
+    # Save file image to PDF
+    images[0].save(file_full_path_minio, save_all=True, quality=100, append_images=images[1:])
+
+    # Put file to minIO
+    try:
+        minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, file_full_path_minio, content_type='application/pdf')
+    except ResponseError as err:
+        return "Error {}".format(err)
+
+
+    # Delete File
+    exts = ['*.jpg', '*.pdf', '*.png']
+    filelist = [f for ext in exts for f in glob.glob(os.path.join(full_path_img2pdf, ext))]
+
+    for f in filelist:
+        os.remove(f)
+
+    return minioFileName
 
 
 def save_image(image: FileStorage, folder: str = None, name: str = None) -> str:
