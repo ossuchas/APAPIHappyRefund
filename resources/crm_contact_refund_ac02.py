@@ -47,3 +47,29 @@ class CrmContactRefundAC02(Resource):
         hyrf.save_to_db()
 
         return hyrf_schema.dump(hyrf), 200
+
+
+class CrmContactRefundAC02Reject(Resource):
+    @classmethod
+    def get(cls, hyrf_id: int):
+        hyrf = CrmContactRefundModel.find_by_id(hyrf_id)
+        if hyrf:
+            return hyrf_schema.dump(hyrf), 200
+
+        return {"message": "No Data Found"}, 404
+
+    @classmethod
+    def put(cls, hyrf_id: int):
+        item_json = request.get_json()
+        hyrf = CrmContactRefundModel.find_by_id(hyrf_id)
+
+        if hyrf:
+            hyrf.ac02_appv_flag = item_json["ac02_appv_flag"]
+            hyrf.ac02_appv_by = item_json["ac02_appv_by"]
+            hyrf.ac02_remarks = item_json["ac02_remarks"]
+        else:
+            return {"message": "Can not find Refund ID for update"}, 404
+
+        hyrf.save_to_db()
+
+        return hyrf_schema.dump(hyrf), 200
