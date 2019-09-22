@@ -16,7 +16,7 @@ class CrmRefundRoleAuth(Resource):
                     "menurefundac01": "1",
                     "menurefundac02": "1"}, 200
 
-        role = CrmRefundRoleViewModel.check_role_tf01(_user_name=user_name)
+        role = CrmRefundRoleViewModel.check_role_auth(_user_name=user_name)
         if role:
             # return role_schema.dump(role), 200
             # return {"message": "1"}, 200

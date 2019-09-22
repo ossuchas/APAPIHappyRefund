@@ -15,5 +15,5 @@ class CrmRefundRoleViewModel(db.Model):
     menurefundac02 = db.Column(db.String(2))
 
     @classmethod
-    def check_role_tf01(cls, _user_name: str) -> "CrmRefundRoleViewModel":
-        return cls.query.filter_by(menurefundtf1='1', username=_user_name).first()
+    def check_role_auth(cls, _user_name: str) -> "CrmRefundRoleViewModel":
+        return cls.query.filter_by(username=_user_name).first()
