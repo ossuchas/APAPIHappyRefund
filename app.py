@@ -19,7 +19,7 @@ from resources.vw_crm_refund_docref import CrmContactRefundListImgUrl
 from resources.vw_crm_refund_appv4 import CrmContactRefundAppv4View
 from resources.image import ImageUpload, Image, AvatarUpload, Avatar
 
-from resources.vw_crm_refund_role import CrmRefundRoleTF01
+from resources.vw_crm_refund_role import CrmRefundRoleAuth
 
 from libs.image_helper import IMAGE_SET
 
@@ -88,7 +88,7 @@ api.add_resource(CrmContactRefundListImgUrl, "/imageurls/<int:hyrf_id>")
 api.add_resource(CrmContactRefundAppv4View, "/appv4list")
 
 # Check Role Page
-api.add_resource(CrmRefundRoleTF01, "/checkroletf01/<string:user_name>")
+api.add_resource(CrmRefundRoleAuth, "/checkroleauth/<string:user_name>")
 
 
 @app.route("/")
