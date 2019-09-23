@@ -25,12 +25,21 @@ def watermark_with_transparency(input_image_path: str = None,
     original_image = Image.open(input_image_path)
     width_org, height_org = original_image.size
 
-    factor = 0.75
-    width = int(width_org * factor)
-    height = int(height_org * factor)
+    if width_org > 2000:
+        factor = 0.35
+        width = int(width_org * factor)
+        height = int(height_org * factor)
+    elif 1000 <= width_org <= 2000:
+        factor = 0.75
+        width = int(width_org * factor)
+        height = int(height_org * factor)
+    else:
+        factor = 1.00
+        width = int(width_org * factor)
+        height = int(height_org * factor)
 
     # resize_image = original_image.resize(size)
-    resize_image = original_image.resize((width, height))
+    resize_image = original_image.resize((width, height), Image.ANTIALIAS)
 
     if isMobile == '1':
         angle = 270
