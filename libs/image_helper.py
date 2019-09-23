@@ -21,10 +21,16 @@ def watermark_with_transparency(input_image_path: str = None,
                                 watermark_image_path: str = None,
                                 isMobile: str = None) -> str:
 
-    size = (1024, 768)
+    # size = (1024, 768)
     original_image = Image.open(input_image_path)
+    width_org, height_org = original_image.size
 
-    resize_image = original_image.resize(size)
+    factor = 0.75
+    width = int(width_org * factor)
+    height = int(height_org * factor)
+
+    # resize_image = original_image.resize(size)
+    resize_image = original_image.resize((width, height))
 
     if isMobile == '1':
         angle = 270
