@@ -82,7 +82,7 @@ class ImageUpload(Resource):
                     minioClient.fput_object(MINIO_BUCKET_NAME, minioFileName, full_path_img, content_type='image/jpeg')
                     minioUrl = minioClient.presigned_get_object(MINIO_BUCKET_NAME, minioFileName, expires=timedelta(days=7))
                 except ResponseError as err:
-                    return {"message": errmsg("image_uploaded").format(err)}, 500
+                    return {"message": errmsg("image_uploaded").format(err)}, 501
 
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,
@@ -110,7 +110,7 @@ class ImageUpload(Resource):
                 hyrf.doc_merge_url = r"{}{}".format(URL_PUBLIC_VIEW, pdf_file_name)
                 hyrf.save_to_db()
             except:
-                return {"message": errmsg("image_uploaded").format(basename)}, 500
+                return {"message": errmsg("image_uploaded").format(basename)}, 502
 
             return {"message": errmsg("image_uploaded").format(basename)}, 201
         except UploadNotAllowed:  # forbidden file type
