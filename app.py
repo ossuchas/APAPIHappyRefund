@@ -17,7 +17,7 @@ from resources.crm_contact_refund_ac02 import CrmContactRefundListAC01Appv, CrmC
 
 from resources.vw_crm_refund_docref import CrmContactRefundListImgUrl
 from resources.vw_crm_refund_appv4 import CrmContactRefundAppv4View
-from resources.image import ImageUpload, Image, AvatarUpload, Avatar
+from resources.image import ImageUpload, Image, AvatarUpload, Avatar, ImageMerge2PDF
 
 from resources.vw_crm_refund_role import CrmRefundRoleAuth
 
@@ -52,6 +52,7 @@ api.add_resource(CrmContactRefund, "/refund/<int:hyrf_id>")
 api.add_resource(UserLogin, "/login")
 
 api.add_resource(ImageUpload, "/upload/image")
+api.add_resource(ImageMerge2PDF, "/img2pdf/<int:hyrf_id>")
 api.add_resource(Image, "/image/<string:filename>")
 api.add_resource(AvatarUpload, "/upload/avatar")
 api.add_resource(Avatar, "/avatar/<int:user_id>")

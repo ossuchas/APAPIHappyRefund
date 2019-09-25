@@ -77,10 +77,12 @@ def save_image_to_pdf(hyrf_id_prefix: str = None,
     files = []
     for obj in objects:
         try:
-            # file_full_path = r'.\\' + obj.object_name
-            file_full_path = r"{}/{}".format(full_path_img2pdf, obj.object_name)
-            files.append(obj.object_name)
-            minioClient.fget_object(MINIO_BUCKET_NAME, obj.object_name, file_full_path)
+            name, ext = os.path.splitext(obj.object_name)
+
+            if ext != file_extension:
+                file_full_path = r"{}/{}".format(full_path_img2pdf, obj.object_name)
+                files.append(obj.object_name)
+                minioClient.fget_object(MINIO_BUCKET_NAME, obj.object_name, file_full_path)
         except ResponseError as err:
             print(err)
 
@@ -93,7 +95,7 @@ def save_image_to_pdf(hyrf_id_prefix: str = None,
             im = im.convert("RGB")
         images.append(im)
 
-    minioFileName = "{}{}".format(uuid.uuid1().hex, file_extension)
+    minioFileName = "{}{}{}".format(hyrf_id_prefix, uuid.uuid1().hex, file_extension)
     file_full_path_minio = "{}/{}".format(full_path_img2pdf, minioFileName)
 
     # Save file image to PDF

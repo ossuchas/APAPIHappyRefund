@@ -96,19 +96,19 @@ class ImageUpload(Resource):
             )
             try:
                 img.save_to_db()
-                # img.exec_to_db()
-                pdf_file_name = image_helper.save_image_to_pdf(
-                    hyrf_id_prefix,
-                    full_path_img2pdf,
-                    MINIO_BUCKET_NAME,
-                    MINIO_ENDPOINT,
-                    MINIO_ACCESS_KEY,
-                    MINIO_SECRET_KEY
-                )
-
-                # Update combile image to pdf
-                hyrf.doc_merge_url = r"{}{}".format(URL_PUBLIC_VIEW, pdf_file_name)
-                hyrf.save_to_db()
+                # # img.exec_to_db()
+                # pdf_file_name = image_helper.save_image_to_pdf(
+                #     hyrf_id_prefix,
+                #     full_path_img2pdf,
+                #     MINIO_BUCKET_NAME,
+                #     MINIO_ENDPOINT,
+                #     MINIO_ACCESS_KEY,
+                #     MINIO_SECRET_KEY
+                # )
+                #
+                # # Update combile image to pdf
+                # hyrf.doc_merge_url = r"{}{}".format(URL_PUBLIC_VIEW, pdf_file_name)
+                # hyrf.save_to_db()
             except:
                 return {"message": errmsg("image_uploaded").format(basename)}, 502
 
@@ -116,6 +116,37 @@ class ImageUpload(Resource):
         except UploadNotAllowed:  # forbidden file type
             extension = image_helper.get_extension(data["image"])
             return {"message": errmsg("image_illegal_extension").format(extension)}, 400
+
+
+class ImageMerge2PDF(Resource):
+    def put(self, hyrf_id: int):
+        pdf_folder = "img2pdf"
+        hyrf_id_prefix = "{}_".format(hyrf_id)
+
+        hyrf = CrmContactRefundModel.find_by_id(hyrf_id)
+
+        if not hyrf:
+            return {"message": "Can not find Happy Refund ID"}, 404
+
+        full_path_img2pdf = r"static/images/{}".format(pdf_folder)
+
+        try:
+            pdf_file_name = image_helper.save_image_to_pdf(
+                hyrf_id_prefix,
+                full_path_img2pdf,
+                MINIO_BUCKET_NAME,
+                MINIO_ENDPOINT,
+                MINIO_ACCESS_KEY,
+                MINIO_SECRET_KEY )
+
+            # Update combile image to pdf
+            hyrf.doc_merge_url = r"{}{}".format(URL_PUBLIC_VIEW, pdf_file_name)
+            hyrf.save_to_db()
+        except:
+            return {"message": errmsg("image_uploaded").format(full_path_img2pdf)}, 502
+
+        return {"message": "Merge Image to PDF Success"}, 201
+        # return hyrf_schema.dump(hyrf), 200
 
 
 class Image(Resource):
