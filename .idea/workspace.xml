@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c0a779e8-5fa4-4441-9d80-07869b1c6034" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/resources/image.py" beforeDir="false" afterPath="$PROJECT_DIR$/resources/image.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/customer/suchat.jpg" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/static/images/customer/suchat_1.jpg" beforeDir="false" />
     </list>
@@ -48,8 +49,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/resources/image.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="59" selection-start-line="59" selection-end-line="59" />
+            <state relative-caret-position="119">
+              <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
               <folding>
                 <element signature="e#0#34#0" expanded="true" />
               </folding>
@@ -146,7 +147,6 @@
         <option value="$PROJECT_DIR$/resources/crm_contact_refund.py" />
         <option value="$PROJECT_DIR$/models/vw_crm_refund_appv4.py" />
         <option value="$PROJECT_DIR$/models/crm_refund_docref.py" />
-        <option value="$PROJECT_DIR$/resources/image.py" />
         <option value="$PROJECT_DIR$/models/crm_contact_refund.py" />
         <option value="$PROJECT_DIR$/resources/crm_contact_refund_ac02.py" />
         <option value="$PROJECT_DIR$/schemas/vw_crm_refund_role.py" />
@@ -155,6 +155,7 @@
         <option value="$PROJECT_DIR$/resources/vw_crm_refund_role.py" />
         <option value="$PROJECT_DIR$/libs/image_helper.py" />
         <option value="$PROJECT_DIR$/.env" />
+        <option value="$PROJECT_DIR$/resources/image.py" />
       </list>
     </option>
   </component>
@@ -441,7 +442,7 @@
       <workItem from="1569238256736" duration="3793000" />
       <workItem from="1569297425067" duration="3023000" />
       <workItem from="1569359392980" duration="3018000" />
-      <workItem from="1569369291333" duration="940000" />
+      <workItem from="1569369291333" duration="1396000" />
     </task>
     <task id="LOCAL-00001" summary="change version Happy Refund root route">
       <created>1568413503588</created>
@@ -454,7 +455,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="193642000" />
+    <option name="totallyTimeSpent" value="194098000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -878,8 +879,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/resources/image.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="59" selection-start-line="59" selection-end-line="59" />
+        <state relative-caret-position="119">
+          <caret line="111" column="18" selection-start-line="111" selection-start-column="18" selection-end-line="111" selection-end-column="18" />
           <folding>
             <element signature="e#0#34#0" expanded="true" />
           </folding>
