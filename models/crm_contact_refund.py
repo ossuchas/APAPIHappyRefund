@@ -58,6 +58,8 @@ class CrmContactRefundModel(db.Model):
     sms_sent_date = db.Column(db.DateTime)
     sms_thx_sent_status = db.Column(db.String(2))
     sms_thx_sent_date = db.Column(db.DateTime)
+    line_sent_status = db.Column(db.String(2))
+    line_sent_date = db.Column(db.DateTime)
 
     doc_sent_status = db.Column(db.String(2))
     doc_sent_date = db.Column(db.DateTime)
