@@ -101,7 +101,8 @@ class CrmContactRefundModel(db.Model):
         return cls.query.filter(
             (cls.tf01_appv_flag == 'N') | (cls.tf01_appv_flag == 'R') |
             (cls.tf02_appv_flag == 'R') | (cls.ac01_appv_flag == 'R') | (cls.ac02_appv_flag == 'R'),
-            (cls.doc_sent_status == 'Y') | (cls.doc_sent_status == 'P') | (cls.doc_sent_status == 'R')
+            (cls.doc_sent_status == 'Y') | (cls.doc_sent_status == 'P') | (cls.doc_sent_status == 'R'),
+            (cls.tran_status == 'A')
         ).order_by(cls.modifydate.desc()).all()
 
     @classmethod
@@ -110,11 +111,11 @@ class CrmContactRefundModel(db.Model):
 
     @classmethod
     def find_all_tf01_appv(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(tf01_appv_flag='A').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter_by(tf01_appv_flag='A', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_tf01_rejt(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(tf01_appv_flag='R').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter_by(tf01_appv_flag='R', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_tf01_all(cls) -> List["CrmContactRefundModel"]:
@@ -123,15 +124,15 @@ class CrmContactRefundModel(db.Model):
         #                         (cls.tf01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
             (cls.tf02_appv_flag == 'N'),
-            (cls.tf01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
+            (cls.tf01_appv_flag == 'A'), (cls.tran_status == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_tf02_appv(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(tf02_appv_flag='A').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter_by(tf02_appv_flag='A', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_tf02_rejt(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(tf02_appv_flag='R').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter_by(tf02_appv_flag='R', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_tf02_all(cls) -> List["CrmContactRefundModel"]:
@@ -140,15 +141,15 @@ class CrmContactRefundModel(db.Model):
         #                         (cls.tf02_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
             (cls.ac01_appv_flag == 'N'),
-            (cls.tf02_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
+            (cls.tf02_appv_flag == 'A'), (cls.tran_status == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac01_appv(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(ac01_appv_flag='A').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter_by(ac01_appv_flag='A', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac01_rejt(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(ac01_appv_flag='R').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter_by(ac01_appv_flag='R', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac01_all(cls) -> List["CrmContactRefundModel"]:
@@ -157,19 +158,25 @@ class CrmContactRefundModel(db.Model):
         #                         (cls.ac01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
             (cls.ac02_appv_flag == 'N'),
-            (cls.ac01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
+            (cls.ac01_appv_flag == 'A'), (cls.tran_status == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac02_appv(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(ac02_appv_flag='A').order_by(cls.modifydate.desc()).all()
+        # return cls.query.filter_by(ac02_appv_flag='A').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter(
+            (cls.ac02_appv_flag == 'A'),
+            (cls.createdate >= '2019-09-26 00:00:00.001'), (cls.tran_status == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac02_rejt(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter_by(ac02_appv_flag='R').order_by(cls.modifydate.desc()).all()
+        return cls.query.filter_by(ac02_appv_flag='R', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac02_all(cls) -> List["CrmContactRefundModel"]:
-        return cls.query.filter((cls.ac02_appv_flag == 'A') | (cls.ac02_appv_flag == 'R')).order_by(cls.modifydate.desc()).all()
+        return cls.query.filter(
+            (cls.ac02_appv_flag == 'A') |
+            (cls.ac02_appv_flag == 'R'), (cls.tran_status == 'A')
+        ).order_by(cls.modifydate.desc()).all()
 
     def save_to_db(self) -> None:
         db.session.add(self)

@@ -14,6 +14,7 @@ from resources.crm_contact_refund_tf01 import CrmContactRefundListCSSent, CrmCon
 from resources.crm_contact_refund_tf02 import CrmContactRefundListTF01Appv, CrmContactRefundTF02, CrmContactRefundListTF02
 from resources.crm_contact_refund_ac01 import CrmContactRefundListTF02Appv, CrmContactRefundAC01, CrmContactRefundListAC01
 from resources.crm_contact_refund_ac02 import CrmContactRefundListAC01Appv, CrmContactRefundAC02, CrmContactRefundListAC02, CrmContactRefundAC02Reject
+from resources.crm_contact_refund_ac03 import CrmContactRefundAC03, CrmContactRefundListAC02Appv, CrmContactRefundAC03Reject
 
 from resources.vw_crm_refund_docref import CrmContactRefundListImgUrl
 from resources.vw_crm_refund_appv4 import CrmContactRefundAppv4View
@@ -81,6 +82,11 @@ api.add_resource(CrmContactRefundListAC01Appv, "/ac01appvlist")
 api.add_resource(CrmContactRefundListAC02, "/ac02alllist")
 api.add_resource(CrmContactRefundAC02, "/ac02approved/<int:hyrf_id>")
 api.add_resource(CrmContactRefundAC02Reject, "/ac02reject/<int:hyrf_id>")
+
+# For AC03
+api.add_resource(CrmContactRefundListAC02Appv, "/ac02appvlist")
+api.add_resource(CrmContactRefundAC03, "/ac03approved/<int:hyrf_id>")
+api.add_resource(CrmContactRefundAC03Reject, "/ac03reject/<int:hyrf_id>")
 
 # List Image Url
 api.add_resource(CrmContactRefundListImgUrl, "/imageurls/<int:hyrf_id>")
