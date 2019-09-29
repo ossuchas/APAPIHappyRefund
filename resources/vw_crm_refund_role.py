@@ -18,7 +18,9 @@ class CrmRefundRoleAuth(Resource):
                         "menurefundtf1": "1",
                         "menurefundtf2": "1",
                         "menurefundac01": "1",
-                        "menurefundac02": "1"}, 200
+                        "menurefundac02": "1",
+                        "menurefundac03": "1"
+                        }, 200
 
             role = CrmRefundRoleViewModel.check_role_auth(_user_name=user_name)
             if role:
@@ -26,17 +28,23 @@ class CrmRefundRoleAuth(Resource):
                         "menurefundtf1": role.menurefundtf1,
                         "menurefundtf2": role.menurefundtf2,
                         "menurefundac01": role.menurefundac01,
-                        "menurefundac02": role.menurefundac02}, 200
+                        "menurefundac02": role.menurefundac02,
+                        "menurefundac03": role.menurefundac03
+                        }, 200
 
             return {"message": "0",
                     "menurefundtf1": "0",
                     "menurefundtf2": "0",
                     "menurefundac01": "0",
-                    "menurefundac02": "0"}, 200
+                    "menurefundac02": "0",
+                    "menurefundac03": "0"
+                    }, 200
         else:
             return {"message": "1",
                     "menurefundtf1": "1",
                     "menurefundtf2": "1",
                     "menurefundac01": "1",
-                    "menurefundac02": "1"}, 200
+                    "menurefundac02": "1",
+                    "menurefundac03": "1"
+                    }, 200
 

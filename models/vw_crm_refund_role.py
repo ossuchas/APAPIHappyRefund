@@ -13,6 +13,7 @@ class CrmRefundRoleViewModel(db.Model):
     menurefundtf2 = db.Column(db.String(2))
     menurefundac01 = db.Column(db.String(2))
     menurefundac02 = db.Column(db.String(2))
+    menurefundac03 = db.Column(db.String(2))
 
     @classmethod
     def check_role_auth(cls, _user_name: str) -> "CrmRefundRoleViewModel":
