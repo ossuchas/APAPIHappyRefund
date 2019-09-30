@@ -19,6 +19,7 @@ class CrmRefundAppv4ViewModel(db.Model):
     mobile = db.Column(db.String(100))
     email = db.Column(db.String(255))
     approvedate4 = db.Column(db.DateTime)
+    approvedate4text = db.Column(db.String(50))
     approve4by = db.Column(db.String(128))
     refundstatus = db.Column(db.String(200))
 
