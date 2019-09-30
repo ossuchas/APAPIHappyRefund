@@ -96,6 +96,7 @@ def save_image_to_pdf(hyrf_id_prefix: str = None,
         images.append(im)
 
     minioFileName = "{}{}{}".format(hyrf_id_prefix, uuid.uuid1().hex, file_extension)
+    # minioFileName = "/{}{}{}".format(hyrf_id_prefix, uuid.uuid1().hex, file_extension)
     file_full_path_minio = "{}/{}".format(full_path_img2pdf, minioFileName)
 
     # Save file image to PDF
