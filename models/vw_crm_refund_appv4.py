@@ -12,6 +12,8 @@ class CrmRefundAppv4ViewModel(db.Model):
     transfernumber = db.Column(db.String(50), primary_key=True)
     transferdateapprove = db.Column(db.DateTime)
     remainingtotalamount = db.Column(db.Float)
+    carryaputil = db.Column(db.String(2))
+    bringaputil = db.Column(db.Float)
     contactid = db.Column(db.String(50))
     personcardid = db.Column(db.String(20))
     fullname = db.Column(db.String(255))
