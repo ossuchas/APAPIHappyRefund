@@ -28,6 +28,13 @@ class CrmContactRefundModel(db.Model):
     mobile = db.Column(db.String(100))
     email = db.Column(db.String(255))
 
+    bankcode = db.Column(db.String(15))
+    bankaccountno = db.Column(db.String(20))
+    legalentityid = db.Column(db.String(10))
+    legalentiryname = db.Column(db.String(1000))
+    legalbankcode = db.Column(db.String(15))
+    legalbankaccountno = db.Column(db.String(20))
+
     tf01_appv_flag = db.Column(db.String(2))
     tf01_appv_date = db.Column(db.DateTime)
     tf01_appv_by = db.Column(db.String(50))
