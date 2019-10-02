@@ -21,6 +21,7 @@ from resources.vw_crm_refund_appv4 import CrmContactRefundAppv4View
 from resources.image import ImageUpload, Image, AvatarUpload, Avatar, ImageMerge2PDF
 
 from resources.vw_crm_refund_role import CrmRefundRoleAuth
+from resources.vw_crm_refund_mst_bank import CrmContactRefundMasterBankView
 
 from libs.image_helper import IMAGE_SET
 
@@ -96,6 +97,9 @@ api.add_resource(CrmContactRefundAppv4View, "/appv4list")
 
 # Check Role Page
 api.add_resource(CrmRefundRoleAuth, "/checkroleauth/<string:user_name>")
+
+# Get Master Bank List all
+api.add_resource(CrmContactRefundMasterBankView, "/bankmasterlist")
 
 
 @app.route("/")
