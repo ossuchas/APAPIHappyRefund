@@ -23,6 +23,8 @@ from resources.image import ImageUpload, Image, AvatarUpload, Avatar, ImageMerge
 from resources.vw_crm_refund_role import CrmRefundRoleAuth
 from resources.vw_crm_refund_mst_bank import CrmContactRefundMasterBankView
 
+from resources.vw_crm_refund_banknamelst import CrmContactRefundBankNameListView
+
 from libs.image_helper import IMAGE_SET
 
 app = Flask(__name__)
@@ -100,6 +102,9 @@ api.add_resource(CrmRefundRoleAuth, "/checkroleauth/<string:user_name>")
 
 # Get Master Bank List all
 api.add_resource(CrmContactRefundMasterBankView, "/bankmasterlist")
+
+# Get Master Bank List Name Account by Contract No.
+api.add_resource(CrmContactRefundBankNameListView, "/banknamelist/<int:hyrf_id>")
 
 
 @app.route("/")
