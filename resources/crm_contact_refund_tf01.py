@@ -39,7 +39,7 @@ class CrmContactRefundTF01(Resource):
             hyrf.tf01_appv_by = item_json["tf01_appv_by"]
             hyrf.tf01_remarks = item_json["tf01_remarks"]
             hyrf.bankcode = item_json["bankcode"]
-            hyrf.bankaccountno = item_json["bankaccountno"]
+            hyrf.bankaccountno = item_json["bankaccountno"].replace('-', '')
         else:
             return {"message": "Can not find Refund ID for update"}, 404
 
