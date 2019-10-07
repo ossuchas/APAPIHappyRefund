@@ -30,6 +30,7 @@ class CrmContactRefundModel(db.Model):
 
     bankcode = db.Column(db.String(15))
     bankaccountno = db.Column(db.String(20))
+    bankaccountname = db.Column(db.String(500))
     legalentityid = db.Column(db.String(10))
     legalentiryname = db.Column(db.String(1000))
     legalbankcode = db.Column(db.String(15))
