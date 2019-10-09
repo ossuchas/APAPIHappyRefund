@@ -39,8 +39,8 @@ class CrmContactRefundAC02(Resource):
             hyrf.ac02_appv_flag = item_json["ac02_appv_flag"]
             hyrf.ac02_appv_by = item_json["ac02_appv_by"]
             hyrf.ac02_remarks = item_json["ac02_remarks"]
-            obj = item_json["ac02_due_date"]
-            hyrf.ac02_due_date = "{}-{}-{}".format(obj["year"], obj["month"], obj["day"])
+            # obj = item_json["ac02_due_date"]
+            # hyrf.ac02_due_date = "{}-{}-{}".format(obj["year"], obj["month"], obj["day"])
         else:
             return {"message": "Can not find Refund ID for update"}, 404
 
