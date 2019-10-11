@@ -57,15 +57,31 @@ class CrmContactRefundModel(db.Model):
     ac02_remarks = db.Column(db.String(4000))
     ac02_due_date = db.Column(db.DateTime)
 
+    ac03_reject_doc_flag = db.Column(db.String(2))
+    ac03_reject_reason = db.Column(db.String(500))
+    ac03_change_due_flag = db.Column(db.String(2))
+    ac03_change_due_date = db.Column(db.DateTime)
+
     email_sent_status = db.Column(db.String(2))
     email_sent_date = db.Column(db.DateTime)
     email_thx_sent_status = db.Column(db.String(2))
     email_thx_sent_date = db.Column(db.DateTime)
 
+    email_reject_doc_status = db.Column(db.String(2))
+    email_reject_doc_date = db.Column(db.DateTime)
+    email_change_due = db.Column(db.String(2))
+    email_change_due_date = db.Column(db.DateTime)
+
     sms_sent_status = db.Column(db.String(2))
     sms_sent_date = db.Column(db.DateTime)
     sms_thx_sent_status = db.Column(db.String(2))
     sms_thx_sent_date = db.Column(db.DateTime)
+
+    sms_reject_doc_status = db.Column(db.String(2))
+    sms_reject_doc_date = db.Column(db.DateTime)
+    sms_change_due = db.Column(db.String(2))
+    sms_change_due_date = db.Column(db.DateTime)
+
     line_sent_status = db.Column(db.String(2))
     line_sent_date = db.Column(db.DateTime)
 
