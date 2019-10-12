@@ -25,6 +25,9 @@ from resources.vw_crm_refund_mst_bank import CrmContactRefundMasterBankView
 
 from resources.vw_crm_refund_banknamelst import CrmContactRefundBankNameListView
 
+# Parameter
+from resources.crm_param import CrmParameterList
+
 from libs.image_helper import IMAGE_SET
 
 app = Flask(__name__)
@@ -105,6 +108,9 @@ api.add_resource(CrmContactRefundMasterBankView, "/bankmasterlist")
 
 # Get Master Bank List Name Account by Contract No.
 api.add_resource(CrmContactRefundBankNameListView, "/banknamelist/<int:hyrf_id>")
+
+# Get CRM Parameter Master
+api.add_resource(CrmParameterList, "/crmparamlist")
 
 
 @app.route("/")
