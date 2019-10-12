@@ -30,7 +30,22 @@ class CrmContactRefundAC03(Resource):
         hyrf = CrmContactRefundModel.find_by_id(hyrf_id)
 
         if hyrf:
-            hyrf.ac02_appv_flag = item_json["ac02_appv_flag"]
+            if item_json["ac03_reject_doc_flag"] == 'Y':
+                # Reject Document
+                hyrf.ac03_reject_doc_flag = 'Y'
+                hyrf.ac03_change_due_flag = 'N'
+                hyrf.ac03_change_due_date = None
+                hyrf.ac03_reject_reason = item_json["ac03_reject_reason"]
+            else:
+                # Change Due Refund Date
+                hyrf.ac03_reject_doc_flag = 'N'
+                hyrf.ac03_change_due_flag = 'Y'
+                obj = item_json["ac03_change_due_date"]
+                hyrf.ac03_change_due_date = "{}-{}-{}".format(obj["year"], obj["month"], obj["day"])
+                hyrf.ac02_due_date = "{}-{}-{}".format(obj["year"], obj["month"], obj["day"])
+                hyrf.ac03_reject_reason = None
+
+            # hyrf.ac03_reject_doc_flag = item_json["ac03_reject_doc_flag"]
             hyrf.ac02_appv_by = item_json["ac02_appv_by"]
             hyrf.ac02_remarks = item_json["ac02_remarks"]
         else:
