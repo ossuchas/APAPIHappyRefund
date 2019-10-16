@@ -7,6 +7,17 @@ RUN apt-get update && apt-get install -y \
     curl apt-utils apt-transport-https debconf-utils gcc build-essential g++-5\
     && rm -rf /var/lib/apt/lists/*
 
+# Configure timezone and locale
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ Asia/Bangkok
+RUN apt-get update \
+    && apt-get install -y tzdata \
+    && rm -rf /var/lib/apt/lists/* \
+    && echo "${TZ}" > /etc/timezone \
+    && rm /etc/localtime \
+    && ln -s /usr/share/zoneinfo/Asia/Tokyo /etc/localtime \
+    && dpkg-reconfigure -f noninteractive tzdata
+
 # adding custom MS repository
 RUN curl https://packages.microsoft.com/keys/microsoft.asc | apt-key add -
 RUN curl https://packages.microsoft.com/config/ubuntu/18.04/prod.list > /etc/apt/sources.list.d/mssql-release.list
@@ -55,8 +66,6 @@ COPY . .
 
 EXPOSE 5000
 
-ENV TZ=Asia/Bangkok
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 #ENV PYTHONPATH "${PYTONPATH}:."
 CMD ["python3", "app.py"]
+
