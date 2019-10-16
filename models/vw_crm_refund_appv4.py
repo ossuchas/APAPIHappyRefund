@@ -24,6 +24,8 @@ class CrmRefundAppv4ViewModel(db.Model):
     approvedate4text = db.Column(db.String(50))
     approve4by = db.Column(db.String(128))
     refundstatus = db.Column(db.String(200))
+    hyrf_id = db.Column(db.Integer)
+    doc_merge_url = db.Column(db.String(255))
 
     @classmethod
     def find_all(cls) -> List["CrmRefundAppv4ViewModel"]:
