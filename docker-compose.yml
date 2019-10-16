@@ -2,7 +2,7 @@ version: '3'
 
 services: 
   app:
-    image: docker.io/ossuchas/happyrefundapi:v1.23.2
+    image: docker.io/ossuchas/happyrefundapi:v1.24.0
     build:
         context: .
         dockerfile: ./Dockerfile
