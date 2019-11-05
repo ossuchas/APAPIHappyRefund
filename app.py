@@ -115,7 +115,7 @@ api.add_resource(CrmParameterList, "/crmparamlist")
 
 @app.route("/")
 def hello_world():
-    return "Happy Refund v.1.0.0"
+    return "Happy Refund at APTHAI Repository apthailand/suchat_s:happyrefund_api_v1.0.0"
 
 
 if __name__ == "__main__":

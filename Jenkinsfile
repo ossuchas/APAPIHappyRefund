@@ -28,10 +28,10 @@ pipeline {
         }
       }
     }
-    /*stage('Remove Unused docker image') {
+    stage('Remove Dangling docker image') {
       steps{
-        sh "docker rmi $registry:$BUILD_NUMBER"
+        sh 'docker rmi $(docker images -f dangling=true -q)'
       }
-    }*/
+    }
   }
 }
