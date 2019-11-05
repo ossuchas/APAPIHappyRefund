@@ -28,10 +28,5 @@ pipeline {
         }
       }
     }
-    stage('Remove Dangling docker image') {
-      steps{
-        sh 'docker rmi $(docker images -f dangling=true -q)'
-      }
-    }
   }
 }
