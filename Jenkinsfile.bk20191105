@@ -1,9 +1,9 @@
 pipeline {
   environment {
-    registry = "apthailand/suchat_s"
+    registry = "ossuchas/happyrefundapi"
     registryCredential = 'docker_ossuchas'
     dockerImage = ''
-    image_tag_number = 'happyrefund_api_v1.0.2'
+    image_tag_number = 'v1.24.4'
   }
   agent any
   stages {
