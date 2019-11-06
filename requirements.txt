@@ -10,3 +10,4 @@ marshmallow-sqlalchemy
 minio
 Pillow
 requests
+python-dotenv
