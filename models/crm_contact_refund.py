@@ -110,7 +110,7 @@ class CrmContactRefundModel(db.Model):
     @classmethod
     def find_by_personalidlist(cls, _personal_id: str) -> List["CrmContactRefundModel"]:
         # return cls.query.filter_by(personcardid=_personal_id).all()
-        return cls.query.filter_by(personcardid=_personal_id, ).all()
+        return cls.query.filter_by(personcardid=_personal_id, ).order_by(cls.doc_sent_status.desc(), cls.modifydate.asc(), cls.doc_sent_date.asc()).all()
 
     @classmethod
     def find_by_contract(cls, _contract_id: str) -> List["CrmContactRefundModel"]:
