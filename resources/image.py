@@ -67,8 +67,10 @@ class ImageUpload(Resource):
             with open(full_path_img, "rb") as img_file:
                 img_file = base64.b64encode(img_file.read())
 
-            full_path_img_water = "static/images/customer/watermark_{}.png".format(hyrf.companyid)
-            image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water, _isMobile)
+            # Watermark with transparency
+            # Modified by Suchat S. 2019-12-04 Remove watermark
+            # full_path_img_water = "static/images/customer/watermark_{}.png".format(hyrf.companyid)
+            # image_helper.watermark_with_transparency(full_path_img, full_path_img, full_path_img_water, _isMobile)
 
             minioFileName = None
             minioUrl = None
