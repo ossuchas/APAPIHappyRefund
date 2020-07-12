@@ -6,7 +6,6 @@ flask_jwt_extended
 flask_uploads
 flask-marshmallow==0.10.1
 marshmallow==3.2.1
-flask_marshmallow
 marshmallow-sqlalchemy==0.17.0
 minio
 Pillow
