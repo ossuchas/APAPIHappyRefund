@@ -4,9 +4,9 @@ flask_cors
 flask_sqlalchemy
 flask_jwt_extended
 flask_uploads
-marshmallow==3.0.0rc5
-flask_marshmallow
-marshmallow-sqlalchemy
+flask-marshmallow==0.10.1
+marshmallow==3.2.1
+marshmallow-sqlalchemy==0.17.0
 minio
 Pillow
 requests
