@@ -11,3 +11,4 @@ minio
 Pillow
 requests
 python-dotenv
+connexion==2.6.0
