@@ -11,6 +11,6 @@ minio
 Pillow
 requests
 python-dotenv
-flask=1.1.1
-werkzeug=0.16.0
-connexion=2.3.0
+flask==1.1.1
+werkzeug==0.16.0
+connexion==2.3.0
