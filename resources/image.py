@@ -89,7 +89,7 @@ class ImageUpload(Resource):
             img = CrmRefundDocrefModel(
                 img_ref_contact_refund=_hyrf_id,
                 img_name=basename,
-                img_file=img_file,
+                # img_file=img_file,
                 img_type=img_type,
                 img_seqn=_seqn_no,
                 minio_bucket_name=MINIO_BUCKET_NAME,

@@ -12,7 +12,7 @@ class CrmRefundDocrefModel(db.Model):
     img_seqn = db.Column(db.Integer, default=1)
     img_type = db.Column(db.String(100))
     img_name = db.Column(db.String(255))
-    img_file = db.Column(db.VARBINARY(max))
+    # img_file = db.Column(db.VARBINARY(max))
     minio_bucket_name = db.Column(db.String(255))
     minio_img_file_name = db.Column(db.String(255))
     minio_img_url = db.Column(db.String(4000))
