@@ -5,6 +5,7 @@ from datetime import datetime
 
 class CrmRefundDocrefModel(db.Model):
     __tablename__ = "crm_refund_docref"
+    __table_args__ = {"schema": "RFN"}
 
     img_id = db.Column(db.Integer, primary_key=True)
     img_ref_contact_refund = db.Column(db.Integer)

@@ -4,6 +4,7 @@ from typing import List
 
 class CrmContactRefundModel(db.Model):
     __tablename__ = "crm_contact_refund"
+    __table_args__ = {"schema": "RFN"}
 
     hyrf_id = db.Column(db.Integer, primary_key=True)
     productid = db.Column(db.String(15))
