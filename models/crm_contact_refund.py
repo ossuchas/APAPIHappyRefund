@@ -1,5 +1,7 @@
 from db import db
 from typing import List
+from sqlalchemy.dialects.postgresql import UUID
+from uuid import uuid4
 
 
 class CrmContactRefundModel(db.Model):
@@ -95,6 +97,9 @@ class CrmContactRefundModel(db.Model):
     createdate = db.Column(db.DateTime)
     modifyby = db.Column(db.String(50))
     modifydate = db.Column(db.DateTime)
+
+    # modified by Suchat S. 2020-10-20 for add new transfer id
+    transferid = db.Column(UUID(as_uuid=True), nullable=True)
 
     @classmethod
     def find_by_id(cls, _hyrf_id: int) -> "CrmContactRefundModel":
