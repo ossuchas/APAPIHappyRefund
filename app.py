@@ -31,7 +31,8 @@ from resources.crm_param import CrmParameterList
 from libs.image_helper import IMAGE_SET
 
 app = Flask(__name__)
-CORS(app, resources=r"/api/*", allow_headers="Content-Type")
+# CORS(app, resources=r"/api/*", allow_headers="Content-Type")
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 load_dotenv(".env", verbose=True)
 app.config.from_object("config")
