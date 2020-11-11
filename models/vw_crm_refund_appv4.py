@@ -1,5 +1,6 @@
 from db import db
 from typing import List
+from sqlalchemy.dialects.postgresql import UUID
 
 
 class CrmRefundAppv4ViewModel(db.Model):
@@ -26,6 +27,9 @@ class CrmRefundAppv4ViewModel(db.Model):
     refundstatus = db.Column(db.String(200))
     hyrf_id = db.Column(db.Integer)
     doc_merge_url = db.Column(db.String(255))
+
+    # modified by Suchat S. 2020-11-11 for add new transfer id
+    transferid = db.Column(UUID(as_uuid=True), nullable=True)
 
     @classmethod
     def find_all(cls) -> List["CrmRefundAppv4ViewModel"]:
