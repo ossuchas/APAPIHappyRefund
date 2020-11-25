@@ -8,7 +8,8 @@ from marshmallow import ValidationError
 from db import db
 from ma import ma
 
-from resources.crm_contact_refund import CrmContactRefund, CrmContactRefundList, CrmContactRefundPersonalIdList, CrmCustomerRefund
+from resources.crm_contact_refund import CrmContactRefund, CrmContactRefundList, CrmContactRefundPersonalIdList, \
+    CrmCustomerRefund, CrmCustomerRefundBank
 from resources.userauthen import UserLogin
 from resources.crm_contact_refund_tf01 import CrmContactRefundListCSSent, CrmContactRefundTF01, CrmContactRefundListTF01
 from resources.crm_contact_refund_tf02 import CrmContactRefundListTF01Appv, CrmContactRefundTF02, CrmContactRefundListTF02
@@ -68,6 +69,7 @@ api.add_resource(Avatar, "/avatar/<int:user_id>")
 # for Customer
 api.add_resource(CrmContactRefundPersonalIdList, "/checkpersonalid/<string:personal_id>")
 api.add_resource(CrmCustomerRefund, "/senddoc/<int:hyrf_id>")
+api.add_resource(CrmCustomerRefundBank, "/banksubmit/<int:hyrf_id>")
 
 # For TF01
 api.add_resource(CrmContactRefundListCSSent, "/cssentlist")

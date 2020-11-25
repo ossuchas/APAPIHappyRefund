@@ -96,3 +96,21 @@ class CrmCustomerRefund(Resource):
         hyrf.save_to_db()
 
         return hyrf_schema.dump(hyrf), 200
+
+
+class CrmCustomerRefundBank(Resource):
+    @classmethod
+    def put(cls, hyrf_id: int):
+        item_json = request.get_json()
+        hyrf = CrmContactRefundModel.find_by_id(hyrf_id)
+
+        if hyrf:
+            hyrf.bankcode = item_json["bankcode"]
+            hyrf.bankaccountno = item_json["bankaccountno"]
+            hyrf.bankaccountname = item_json["bankaccountname"]
+        else:
+            return {"message": "Can not find Refund ID for update"}, 404
+
+        hyrf.save_to_db()
+
+        return hyrf_schema.dump(hyrf), 200
