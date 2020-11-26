@@ -15,7 +15,10 @@ from resources.crm_contact_refund_tf01 import CrmContactRefundListCSSent, \
     CrmContactRefundTF01, \
     CrmContactRefundListTF01, \
     CrmContactRefundSearchTF01
-from resources.crm_contact_refund_tf02 import CrmContactRefundListTF01Appv, CrmContactRefundTF02, CrmContactRefundListTF02
+from resources.crm_contact_refund_tf02 import CrmContactRefundListTF01Appv, \
+    CrmContactRefundTF02, \
+    CrmContactRefundListTF02, \
+    CrmContactRefundSearchTF01Appv
 from resources.crm_contact_refund_ac01 import CrmContactRefundListTF02Appv, CrmContactRefundAC01, CrmContactRefundListAC01
 from resources.crm_contact_refund_ac02 import CrmContactRefundListAC01Appv, CrmContactRefundAC02, CrmContactRefundListAC02, CrmContactRefundAC02Reject
 from resources.crm_contact_refund_ac03 import CrmContactRefundAC03, CrmContactRefundListAC02Appv, CrmContactRefundAC03Reject
@@ -78,12 +81,13 @@ api.add_resource(CrmCustomerRefundBank, "/banksubmit/<int:hyrf_id>")
 api.add_resource(CrmContactRefundListCSSent, "/cssentlist")
 api.add_resource(CrmContactRefundListTF01, "/tf01alllist")
 api.add_resource(CrmContactRefundTF01, "/tf01approved/<int:hyrf_id>")
-api.add_resource(CrmContactRefundSearchTF01, "/tf01search/<string:text_search>")
+api.add_resource(CrmContactRefundSearchTF01, "/tf01search/<string:str_search>")
 
 # For TF02
 api.add_resource(CrmContactRefundListTF01Appv, "/tf01appvlist")
 api.add_resource(CrmContactRefundListTF02, "/tf02alllist")
 api.add_resource(CrmContactRefundTF02, "/tf02approved/<int:hyrf_id>")
+api.add_resource(CrmContactRefundSearchTF01Appv, "/tf02search/<string:str_search>")
 
 # For AC01
 api.add_resource(CrmContactRefundListTF02Appv, "/tf02appvlist")
