@@ -20,6 +20,12 @@ class CrmContactRefundListTF01(Resource):
         return hyrf_list_schema.dump(CrmContactRefundModel.find_all_tf01_all()), 200
 
 
+class CrmContactRefundSearchTF01(Resource):
+    @classmethod
+    def get(cls, text_search: str):
+        return hyrf_list_schema.dump(CrmContactRefundModel.find_txt_search_cs_sent(text_search)), 200
+
+
 class CrmContactRefundTF01(Resource):
     @classmethod
     def get(cls, hyrf_id: int):

@@ -137,6 +137,16 @@ class CrmContactRefundModel(db.Model):
         ).order_by(cls.modifydate.desc()).all()
 
     @classmethod
+    def find_txt_search_cs_sent(cls, str_search: str) -> List["CrmContactRefundModel"]:
+        return cls.query.filter(
+            (cls.tf01_appv_flag == 'N') | (cls.tf01_appv_flag == 'R') |
+            (cls.tf02_appv_flag == 'R') | (cls.ac01_appv_flag == 'R') | (cls.ac02_appv_flag == 'R'),
+            (cls.doc_sent_status == 'Y') | (cls.doc_sent_status == 'P') | (cls.doc_sent_status == 'R'),
+            (cls.tran_status == 'A'),
+            (cls.unitnumber.like('%' + str_search + '%'))
+        ).order_by(cls.modifydate.desc()).all()
+
+    @classmethod
     def validate_id_sent(cls, _contract_id: str) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(contractnumber=_contract_id, doc_sent_status='Y').all()
 
