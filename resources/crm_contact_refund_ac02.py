@@ -15,6 +15,12 @@ class CrmContactRefundListAC01Appv(Resource):
         return hyrf_list_schema.dump(CrmContactRefundModel.find_all_ac01_appv()), 200
 
 
+class CrmContactRefundSearchAC01Appv(Resource):
+    @classmethod
+    def get(cls, str_search: str):
+        return hyrf_list_schema.dump(CrmContactRefundModel.find_txt_search_ac01_appv(str_search)), 200
+
+
 class CrmContactRefundListAC02(Resource):
     @classmethod
     def get(cls):

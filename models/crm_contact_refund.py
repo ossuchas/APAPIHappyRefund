@@ -184,6 +184,17 @@ class CrmContactRefundModel(db.Model):
         return cls.query.filter_by(tf02_appv_flag='A', tran_status='A').order_by(cls.modifydate.desc()).all()
 
     @classmethod
+    def find_txt_search_tf02_appv(cls, str_search: str) -> List["CrmContactRefundModel"]:
+        return cls.query.filter(
+            (cls.tf02_appv_flag == 'A'), (cls.tran_status == 'A'),
+            (cls.unitnumber.like('%' + str_search + '%')) |
+            (cls.productid.like('%' + str_search + '%')) |
+            (cls.project.like('%' + str_search + '%')) |
+            (cls.fullname.like('%' + str_search + '%')) |
+            (cls.coownername.like('%' + str_search + '%'))
+        ).order_by(cls.modifydate.desc()).all()
+
+    @classmethod
     def find_all_tf02_rejt(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(tf02_appv_flag='R', tran_status='A').order_by(cls.modifydate.desc()).all()
 
@@ -196,6 +207,17 @@ class CrmContactRefundModel(db.Model):
     @classmethod
     def find_all_ac01_appv(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(ac01_appv_flag='A', tran_status='A').order_by(cls.modifydate.desc()).all()
+
+    @classmethod
+    def find_txt_search_ac01_appv(cls, str_search: str) -> List["CrmContactRefundModel"]:
+        return cls.query.filter(
+            (cls.ac01_appv_flag == 'A'), (cls.tran_status == 'A'),
+            (cls.unitnumber.like('%' + str_search + '%')) |
+            (cls.productid.like('%' + str_search + '%')) |
+            (cls.project.like('%' + str_search + '%')) |
+            (cls.fullname.like('%' + str_search + '%')) |
+            (cls.coownername.like('%' + str_search + '%'))
+        ).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac01_rejt(cls) -> List["CrmContactRefundModel"]:
