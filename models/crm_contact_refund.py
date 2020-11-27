@@ -161,7 +161,7 @@ class CrmContactRefundModel(db.Model):
     @classmethod
     def find_txt_search_tf01_appv(cls, str_search: str) -> List["CrmContactRefundModel"]:
         return cls.query.filter(
-            (cls.tf02_appv_flag == 'N'), (cls.tf01_appv_flag == 'A'), (cls.tran_status == 'A')
+            (cls.tf02_appv_flag == 'N'), (cls.tf01_appv_flag == 'A'), (cls.tran_status == 'A'),
             (
                 (cls.unitnumber.like('%' + str_search + '%')) | (cls.productid.like('%' + str_search + '%')) |
                 (cls.project.like('%' + str_search + '%')) | (cls.fullname.like('%' + str_search + '%')) |
@@ -195,7 +195,8 @@ class CrmContactRefundModel(db.Model):
     @classmethod
     def find_txt_search_tf02_appv(cls, str_search: str) -> List["CrmContactRefundModel"]:
         return cls.query.filter(
-            (cls.tf02_appv_flag == 'N'), (cls.tf01_appv_flag == 'A'), (cls.tran_status == 'A'),
+            (cls.tf02_appv_flag == 'A'), (cls.tf01_appv_flag == 'A'),
+            (cls.tran_status == 'A'), (cls.ac01_appv_flag == 'N'),
             (
                     (cls.unitnumber.like('%' + str_search + '%')) | (cls.productid.like('%' + str_search + '%')) |
                     (cls.project.like('%' + str_search + '%')) | (cls.fullname.like('%' + str_search + '%')) |
@@ -230,6 +231,7 @@ class CrmContactRefundModel(db.Model):
     def find_txt_search_ac01_appv(cls, str_search: str) -> List["CrmContactRefundModel"]:
         return cls.query.filter(
             (cls.ac02_appv_flag == 'N'), (cls.ac01_appv_flag == 'A'), (cls.tran_status == 'A'),
+            (cls.tf01_appv_flag == 'A'), (cls.tf02_appv_flag == 'A'),
             (
                     (cls.unitnumber.like('%' + str_search + '%')) | (cls.productid.like('%' + str_search + '%')) |
                     (cls.project.like('%' + str_search + '%')) | (cls.fullname.like('%' + str_search + '%')) |
