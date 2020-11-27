@@ -34,3 +34,14 @@ class CrmRefundAppv4ViewModel(db.Model):
     @classmethod
     def find_all(cls) -> List["CrmRefundAppv4ViewModel"]:
         return cls.query.filter_by().order_by(cls.approvedate4.desc()).all()
+
+    @classmethod
+    def find_txt_search_all(cls, str_search: str) -> List["CrmRefundAppv4ViewModel"]:
+        return cls.query.filter(
+            (cls.unitnumber.like('%' + str_search + '%')) |
+            (cls.productid.like('%' + str_search + '%')) |
+            (cls.project.like('%' + str_search + '%')) |
+            (cls.fullname.like('%' + str_search + '%')) |
+            (cls.transfernumber.like('%' + str_search + '%')) |
+            (cls.contractnumber.like('%' + str_search + '%'))
+        ).order_by(cls.approvedate4.desc()).all()

@@ -31,7 +31,7 @@ from resources.crm_contact_refund_ac02 import CrmContactRefundListAC01Appv, \
 from resources.crm_contact_refund_ac03 import CrmContactRefundAC03, CrmContactRefundListAC02Appv, CrmContactRefundAC03Reject
 
 from resources.vw_crm_refund_docref import CrmContactRefundListImgUrl
-from resources.vw_crm_refund_appv4 import CrmContactRefundAppv4View
+from resources.vw_crm_refund_appv4 import CrmContactRefundAppv4View, CrmContactRefundAppv4SearchView
 from resources.image import ImageUpload, Image, AvatarUpload, Avatar, ImageMerge2PDF
 
 from resources.vw_crm_refund_role import CrmRefundRoleAuth
@@ -119,6 +119,7 @@ api.add_resource(CrmContactRefundListImgUrl, "/imageurls/<int:hyrf_id>")
 
 # List Unit Appoved 4
 api.add_resource(CrmContactRefundAppv4View, "/appv4list")
+api.add_resource(CrmContactRefundAppv4SearchView, "/appv4search/<string:str_search>")
 
 # Check Role Page
 api.add_resource(CrmRefundRoleAuth, "/checkroleauth/<string:user_name>")

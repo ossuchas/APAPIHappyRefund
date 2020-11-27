@@ -12,3 +12,9 @@ class CrmContactRefundAppv4View(Resource):
     @classmethod
     def get(cls):
         return appv4_list_schema.dump(CrmRefundAppv4ViewModel.find_all()), 200
+
+
+class CrmContactRefundAppv4SearchView(Resource):
+    @classmethod
+    def get(cls, str_search: str):
+        return appv4_list_schema.dump(CrmRefundAppv4ViewModel.find_txt_search_all(str_search)), 200
