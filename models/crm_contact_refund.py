@@ -169,15 +169,6 @@ class CrmContactRefundModel(db.Model):
             )
         ).order_by(cls.modifydate.desc()).all()
 
-        # return cls.query.filter(
-        #     (cls.tf01_appv_flag == 'A'), (cls.tran_status == 'A'),
-        #     ((cls.unitnumber.like('%' + str_search + '%')) |
-        #     (cls.productid.like('%' + str_search + '%')) |
-        #     (cls.project.like('%' + str_search + '%')) |
-        #     (cls.fullname.like('%' + str_search + '%')) |
-        #     (cls.coownername.like('%' + str_search + '%')))
-        # ).order_by(cls.modifydate.desc()).all()
-
     @classmethod
     def find_all_tf01_rejt(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(tf01_appv_flag='R', tran_status='A').order_by(cls.modifydate.desc()).all()
@@ -204,15 +195,6 @@ class CrmContactRefundModel(db.Model):
             )
         ).order_by(cls.modifydate.desc()).all()
 
-        # return cls.query.filter(
-        #     (cls.tf02_appv_flag == 'A'), (cls.tran_status == 'A'),
-        #     ((cls.unitnumber.like('%' + str_search + '%')) |
-        #     (cls.productid.like('%' + str_search + '%')) |
-        #     (cls.project.like('%' + str_search + '%')) |
-        #     (cls.fullname.like('%' + str_search + '%')) |
-        #     (cls.coownername.like('%' + str_search + '%')))
-        # ).order_by(cls.modifydate.desc()).all()
-
     @classmethod
     def find_all_tf02_rejt(cls) -> List["CrmContactRefundModel"]:
         return cls.query.filter_by(tf02_appv_flag='R', tran_status='A').order_by(cls.modifydate.desc()).all()
@@ -238,14 +220,6 @@ class CrmContactRefundModel(db.Model):
                     (cls.coownername.like('%' + str_search + '%'))
             )
         ).order_by(cls.modifydate.desc()).all()
-        # return cls.query.filter(
-        #     (cls.ac01_appv_flag == 'A'), (cls.tran_status == 'A'),
-        #     ((cls.unitnumber.like('%' + str_search + '%')) |
-        #     (cls.productid.like('%' + str_search + '%')) |
-        #     (cls.project.like('%' + str_search + '%')) |
-        #     (cls.fullname.like('%' + str_search + '%')) |
-        #     (cls.coownername.like('%' + str_search + '%')))
-        # ).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac01_rejt(cls) -> List["CrmContactRefundModel"]:
@@ -253,16 +227,12 @@ class CrmContactRefundModel(db.Model):
 
     @classmethod
     def find_all_ac01_all(cls) -> List["CrmContactRefundModel"]:
-        # return cls.query.filter((cls.ac02_appv_flag == 'N') |
-        #                         (cls.ac02_appv_flag == 'R'),
-        #                         (cls.ac01_appv_flag == 'A')).order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
             (cls.ac02_appv_flag == 'N'),
             (cls.ac01_appv_flag == 'A'), (cls.tran_status == 'A')).order_by(cls.modifydate.desc()).all()
 
     @classmethod
     def find_all_ac02_appv(cls) -> List["CrmContactRefundModel"]:
-        # return cls.query.filter_by(ac02_appv_flag='A').order_by(cls.modifydate.desc()).all()
         return cls.query.filter(
             (cls.ac02_appv_flag == 'A'),
             (cls.createdate >= '2019-09-26 00:00:00.001'), (cls.tran_status == 'A')).order_by(cls.modifydate.desc()).all()

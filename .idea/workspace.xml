@@ -5,7 +5,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="c0a779e8-5fa4-4441-9d80-07869b1c6034" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/models/crm_contact_refund.py" beforeDir="false" afterPath="$PROJECT_DIR$/models/crm_contact_refund.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -384,7 +383,7 @@
       <workItem from="1606309727696" duration="1699000" />
       <workItem from="1606351865995" duration="6174000" />
       <workItem from="1606400918895" duration="1202000" />
-      <workItem from="1606432972356" duration="10036000" />
+      <workItem from="1606432972356" duration="10400000" />
     </task>
     <task id="LOCAL-00001" summary="change version Happy Refund root route">
       <created>1568413503588</created>
